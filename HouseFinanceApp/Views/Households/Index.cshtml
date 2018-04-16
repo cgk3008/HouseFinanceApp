@@ -1,33 +1,72 @@
 ﻿@model IEnumerable<HouseFinanceApp.Models.Household>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
+<html>
+<body>
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
+	<div class="right_col" role="main">
+		<div class="">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+			@*<div class="clearfix"></div>*@
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+							<h1>Household Index <small></small></h1>
+							<div class="x_content">
 
-</table>
+							</div>
+							@*<div class="clearfix"></div>*@
+						</div>
+						<div class="x_content">
+							<p class="text-muted font-13 m-b-30">
+
+							</p>
+
+
+							<p>
+								@Html.ActionLink("Create New", "Create")
+							</p>
+							<table class="table">
+								<tr>
+									<th>
+										@Html.DisplayNameFor(model => model.Name)
+									</th>
+									<th></th>
+								</tr>
+
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>
+											@Html.DisplayFor(modelItem => item.Name)
+										</td>
+										<td>
+											@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+											@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+											@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+										</td>
+									</tr>
+								}
+
+							</table>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		@Html.ActionLink("Back to List", "Index")
+	</div>
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}
+</body>
+</html>

@@ -259,3 +259,9 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/HouseFinanceApp/private9.Release.config
+/HouseFinanceApp/private9.Debug.config
+/HouseFinanceApp/private9.config
+/HouseFinanceApp/private11.config
+/HouseFinanceApp/private11.Release.config
+/HouseFinanceApp/private11.Debug.config

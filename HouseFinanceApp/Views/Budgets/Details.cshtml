@@ -1,34 +1,70 @@
 ﻿@model HouseFinanceApp.Models.Budget
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
+<html>
+<body>
 
-<h2>Details</h2>
 
-<div>
-    <h4>Budget</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Household.Name)
-        </dt>
+	<div class="right_col" role="main">
+		<div class="">
 
-        <dd>
-            @Html.DisplayFor(model => model.Household.Name)
-        </dd>
+			@*<div class="clearfix"></div>*@
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+							<h1>Budget Details <small></small></h1>
+							<div class="x_content">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+							</div>
+							@*<div class="clearfix"></div>*@
+						</div>
+						<div class="x_content">
+							<p class="text-muted font-13 m-b-30">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+							</p>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+							<div>
+								<h4>Budget</h4>
+								<hr />
+								<dl class="dl-horizontal">
+									<dt>
+										@Html.DisplayNameFor(model => model.Household.Name)
+									</dt>
+
+									<dd>
+										@Html.DisplayFor(model => model.Household.Name)
+									</dd>
+
+									<dt>
+										@Html.DisplayNameFor(model => model.Name)
+									</dt>
+
+									<dd>
+										@Html.DisplayFor(model => model.Name)
+									</dd>
+
+								</dl>
+							</div>
+							<p>
+								@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+								@Html.ActionLink("Back to List", "Index")
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		@Html.ActionLink("Back to List", "Index")
+	</div>
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}
+</body>
+</html>

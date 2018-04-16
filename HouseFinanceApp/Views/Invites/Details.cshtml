@@ -1,66 +1,103 @@
 ﻿@model HouseFinanceApp.Models.Invite
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<html>
+<body>
 
-<div>
-    <h4>Invite</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Household.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Household.Name)
-        </dd>
+	<div class="right_col" role="main">
+		<div class="">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.InvitedBy.FirstName)
-        </dt>
+			@*<div class="clearfix"></div>*@
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_title">
+							<h1>Invite Details <small></small></h1>
+							<div class="x_content">
 
-        <dd>
-            @Html.DisplayFor(model => model.InvitedBy.FirstName)
-        </dd>
+							</div>
+							@*<div class="clearfix"></div>*@
+						</div>
+						<div class="x_content">
+							<p class="text-muted font-13 m-b-30">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+							</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+							<div>
+								<h4>Invite</h4>
+								<hr />
+								<dl class="dl-horizontal">
+									<dt>
+										@Html.DisplayNameFor(model => model.Household.Name)
+									</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HHToken)
-        </dt>
+									<dd>
+										@Html.DisplayFor(model => model.Household.Name)
+									</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.HHToken)
-        </dd>
+									<dt>
+										@Html.DisplayNameFor(model => model.InvitedBy.FirstName)
+									</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.InviteDate)
-        </dt>
+									<dd>
+										@Html.DisplayFor(model => model.InvitedBy.FirstName)
+									</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.InviteDate)
-        </dd>
+									<dt>
+										@Html.DisplayNameFor(model => model.Email)
+									</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HasBeenUsed)
-        </dt>
+									<dd>
+										@Html.DisplayFor(model => model.Email)
+									</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.HasBeenUsed)
-        </dd>
+									<dt>
+										@Html.DisplayNameFor(model => model.HHToken)
+									</dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+									<dd>
+										@Html.DisplayFor(model => model.HHToken)
+									</dd>
+
+									<dt>
+										@Html.DisplayNameFor(model => model.InviteDate)
+									</dt>
+
+									<dd>
+										@Html.DisplayFor(model => model.InviteDate)
+									</dd>
+
+									<dt>
+										@Html.DisplayNameFor(model => model.HasBeenUsed)
+									</dt>
+
+									<dd>
+										@Html.DisplayFor(model => model.HasBeenUsed)
+									</dd>
+
+								</dl>
+							</div>
+							<p>
+								@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+								@Html.ActionLink("Back to List", "Index")
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		@Html.ActionLink("Back to List", "Index")
+	</div>
+
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+	}
+</body>
+</html>

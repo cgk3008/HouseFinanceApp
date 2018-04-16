@@ -207,8 +207,13 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Helper\AuthHouse.cs" />
+    <Compile Include="Models\Helper\Extensions.cs" />
     <Compile Include="Models\Finance.cs" />
+    <Compile Include="Models\Helper\Refresh.cs" />
+    <Compile Include="Models\Helper\UserHelper.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Helper\IsInHouse.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -3698,6 +3703,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="private9.config" />
+    <Content Include="private9.Debug.config">
+      <DependentUpon>private9.config</DependentUpon>
+    </Content>
+    <Content Include="private9.Release.config">
+      <DependentUpon>private9.config</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -4542,6 +4554,13 @@
     <Content Include="Assets\vendors\validator\.gitignore" />
     <Content Include="Assets\vendors\validator\README.md" />
     <Content Include="Assets\vendors\validator\validator.jquery.json" />
+    <Content Include="private11.config" />
+    <Content Include="private11.Debug.config">
+      <DependentUpon>private11.config</DependentUpon>
+    </Content>
+    <Content Include="private11.Release.config">
+      <DependentUpon>private11.config</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -4553,6 +4572,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <None Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
