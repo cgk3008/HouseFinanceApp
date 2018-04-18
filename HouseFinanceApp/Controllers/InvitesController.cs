@@ -4,9 +4,11 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using HouseFinanceApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace HouseFinanceApp.Controllers
 {
@@ -37,31 +39,72 @@ namespace HouseFinanceApp.Controllers
         }
 
         // GET: Invites/Create
-        public ActionResult Create()
+        public ActionResult Invite()
         {
             ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name");
-            ViewBag.InvitedById = new SelectList(db.Users, "Id", "FirstName");
+            ViewBag.InvitedById = new SelectList(db.Users, "Id", "FullName");
             return View();
         }
 
-        // POST: Invites/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,HouseholdId,Email,HHToken,InviteDate,InvitedById,HasBeenUsed")] Invite invite)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Invite(string email)
         {
-            if (ModelState.IsValid)
+            var code = Guid.NewGuid();
+            var callbackUrl = Url.Action("CreateJoinHousehold", "Households", new { code }, protocol: Request.Url.Scheme);
+
+            try
             {
-                db.Invites.Add(invite);
+                EmailService ems = new EmailService();
+                IdentityMessage msg = new IdentityMessage();
+
+                msg.Body = "Please join my household." + Environment.NewLine + "Please click the following link to join <a href=\"" + callbackUrl + "\">JOIN</a>";
+                msg.Destination = email;
+                msg.Subject = "Invite to Household";
+
+
+  //Create record in the Invites table
+                Invite model = new Invite();
+                model.Email = email;
+                model.HHToken = code;
+                model.HouseholdId = User.Identity.GetHouseholdId().Value;
+                model.InviteDate = DateTimeOffset.Now;
+                model.InvitedById = User.Identity.GetUserId();
+
+                db.Invites.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                await ems.SendMailAsync(msg);
+
+              
             }
 
-            ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", invite.HouseholdId);
-            ViewBag.InvitedById = new SelectList(db.Users, "Id", "FirstName", invite.InvitedById);
-            return View(invite);
+            catch (Exception ex)
+            {
+                await Task.FromResult(0);
+            }
+            return RedirectToAction("Index", "Home");
+
         }
+
+        //// POST: Invites/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,HouseholdId,Email,HHToken,InviteDate,InvitedById,HasBeenUsed")] Invite invite)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Invites.Add(invite);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", invite.HouseholdId);
+        //    ViewBag.InvitedById = new SelectList(db.Users, "Id", "FirstName", invite.InvitedById);
+        //    return View(invite);
+        //}
 
         // GET: Invites/Edit/5
         public ActionResult Edit(int? id)

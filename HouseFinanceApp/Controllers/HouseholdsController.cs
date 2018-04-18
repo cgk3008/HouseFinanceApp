@@ -4,9 +4,12 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using HouseFinanceApp.Models;
+using HouseFinanceApp.Models.Helper;
+using Microsoft.AspNet.Identity;
 
 namespace HouseFinanceApp.Controllers
 {
@@ -36,7 +39,7 @@ namespace HouseFinanceApp.Controllers
         }
 
         // GET: Households/Create
-        public ActionResult Create()
+        public ActionResult CreateHousehold()
         {
             return View();
         }
@@ -44,18 +47,141 @@ namespace HouseFinanceApp.Controllers
         // POST: Households/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,Name")] Household household)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Households.Add(household);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(household);
+        //}
+
+        [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Household household)
+        public async Task<ActionResult> CreateHousehold(HouseholdViewModel vm)
         {
-            if (ModelState.IsValid)
+            //Create new Household and save to DB
+            Household hh = new Household();
+            hh.Name = vm.HHName;
+            //hh.Id = vm.Member.HouseholdId ?? default(int);
+            db.Households.Add(hh);
+            db.SaveChanges();
+
+            //Add the current user as the first member of the new household
+            var user = db.Users.Find(User.Identity.GetUserId());
+            hh.Members.Add(user);
+            db.SaveChanges();
+
+            //Soution1
+            //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+            //Solution2
+            //((ClaimsIdentity)identity).RemoveClaim(identity.FindFirst(ClaimTypes.Name));
+            //((ClaimsIdentity)identity).AddClaim(new Claim(ClaimTypes.Name, "new_name"));
+
+            //Solution3
+            //Task SignInManager<>.RefreshSignInAsync(vm.Member);
+
+            //Solution4
+            //identity.AddClaim(new Claim("myClaimType", "myClaimValue"));
+
+            //var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            //authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            //authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, identity);
+
+            //Solution5 **BEST**
+            await ControllerContext.HttpContext.RefreshAuthentication(user);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        public ActionResult CreateJoinHousehold(Guid? code)
+        {
+            //If the current user accessing this page already has a HouseholdId, send them to their dashboard
+            if (User.Identity.IsInHousehold())
             {
-                db.Households.Add(household);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
-            return View(household);
+            HouseholdViewModel vm = new HouseholdViewModel();
+
+            //Determine whether the user has been sent an invite and set property values 
+            if (code != null)
+            {
+                string msg = "";
+                if (ValidInvite(code, ref msg))
+                {
+                    Invite result = db.Invites.FirstOrDefault(i => i.HHToken == code);
+
+                    vm.IsJoinHouse = true;
+                    vm.HHId = result.HouseholdId;
+                    vm.HHName = result.Household.Name;
+
+                    //Set USED flag to true for this invite
+
+                    result.HasBeenUsed = true;
+
+                    ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+                    user.InviteEmail = result.Email;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    return RedirectToAction("InviteError", new { errMsg = msg });
+                }
+            }
+            return View(vm);
+        }
+
+        private bool ValidInvite(Guid? code, ref string message)
+        {
+            if ((DateTime.Now - db.Invites.FirstOrDefault(i => i.HHToken == code).InviteDate).TotalDays < 6)
+            {
+                bool result = db.Invites.FirstOrDefault(i => i.HHToken == code).HasBeenUsed;
+                if (result)
+                {
+                    message = "invalid";
+                }
+                else
+                {
+                    message = "valid";
+                }
+
+                return !result;
+            }
+            else
+            {
+                message = "expired";
+                return false;
+            }
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> JoinHousehold(HouseholdViewModel vm)
+        {
+            Household hh = db.Households.Find(vm.HHId);
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            hh.Members.Add(user);
+            db.SaveChanges();
+
+            await ControllerContext.HttpContext.RefreshAuthentication(user);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        
+        public ActionResult InviteError()
+        {
+            return View();
         }
 
         // GET: Households/Edit/5

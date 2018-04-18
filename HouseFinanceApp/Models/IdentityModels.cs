@@ -25,8 +25,8 @@ namespace HouseFinanceApp.Models
             Invites = new HashSet<Invite>();
             Accounts = new HashSet<PersonalAccount>();
         }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        //public string FirstName { get; set; }
+        //public string LastName { get; set; }
         public string FullName { get; set; }
         public string DisplayName { get; set; }
         public int? HouseholdId { get; set; }

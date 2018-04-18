@@ -31,7 +31,7 @@
 							@using (Html.BeginForm())
 							{
 								@Html.AntiForgeryToken()
-
+								@Html.HiddenFor(m => m.CreatedById)
 								<div class="form-horizontal">
 									<h4>PersonalAccount</h4>
 									<hr />
@@ -68,15 +68,15 @@
 										</div>
 									</div>
 
-									<div class="form-group">
+									@*<div class="form-group">
 										@Html.LabelFor(model => model.CreatedById, "CreatedById", htmlAttributes: new { @class = "control-label col-md-2" })
 										<div class="col-md-10">
 											@Html.DropDownList("CreatedById", null, htmlAttributes: new { @class = "form-control" })
 											@Html.ValidationMessageFor(model => model.CreatedById, "", new { @class = "text-danger" })
 										</div>
-									</div>
+									</div>*@
 
-									<div class="form-group">
+									@*<div class="form-group">
 										@Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label col-md-2" })
 										<div class="col-md-10">
 											<div class="checkbox">
@@ -84,7 +84,7 @@
 												@Html.ValidationMessageFor(model => model.IsDeleted, "", new { @class = "text-danger" })
 											</div>
 										</div>
-									</div>
+									</div>*@
 
 									<div class="form-group">
 										<div class="col-md-offset-2 col-md-10">

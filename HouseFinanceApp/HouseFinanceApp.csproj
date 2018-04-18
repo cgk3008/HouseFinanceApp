@@ -212,8 +212,8 @@
     <Compile Include="Models\Finance.cs" />
     <Compile Include="Models\Helper\Refresh.cs" />
     <Compile Include="Models\Helper\UserHelper.cs" />
+    <Compile Include="Models\HouseholdViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Helper\IsInHouse.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -4621,12 +4621,12 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Households\Create.cshtml" />
+    <Content Include="Views\Households\CreateHousehold.cshtml" />
     <Content Include="Views\Households\Delete.cshtml" />
     <Content Include="Views\Households\Details.cshtml" />
     <Content Include="Views\Households\Edit.cshtml" />
     <Content Include="Views\Households\Index.cshtml" />
-    <Content Include="Views\Invites\Create.cshtml" />
+    <Content Include="Views\Invites\Invite.cshtml" />
     <Content Include="Views\Invites\Delete.cshtml" />
     <Content Include="Views\Invites\Details.cshtml" />
     <Content Include="Views\Invites\Edit.cshtml" />
@@ -4646,6 +4646,10 @@
     <Content Include="Views\Transactions\Details.cshtml" />
     <Content Include="Views\Transactions\Edit.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
+    <Content Include="Views\Households\CreateJoinHousehold.cshtml" />
+    <Content Include="Views\Households\View.cshtml" />
+    <Content Include="Views\Households\JoinHousehold.cshtml" />
+    <Content Include="Views\Households\InviteError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

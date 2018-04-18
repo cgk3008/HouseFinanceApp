@@ -32,7 +32,7 @@
 							<table class="table">
 								<tr>
 									<th>
-										@Html.DisplayNameFor(model => model.CreatedBy.FirstName)
+										@Html.DisplayNameFor(model => model.CreatedBy.FullName)
 									</th>
 									<th>
 										@Html.DisplayNameFor(model => model.Household.Name)
@@ -56,7 +56,7 @@
 								{
 									<tr>
 										<td>
-											@Html.DisplayFor(modelItem => item.CreatedBy.FirstName)
+											@Html.DisplayFor(modelItem => item.CreatedBy.FullName)
 										</td>
 										<td>
 											@Html.DisplayFor(modelItem => item.Household.Name)

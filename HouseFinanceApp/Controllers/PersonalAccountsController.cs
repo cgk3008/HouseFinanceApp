@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HouseFinanceApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace HouseFinanceApp.Controllers
 {
@@ -39,7 +40,7 @@ namespace HouseFinanceApp.Controllers
         // GET: PersonalAccounts/Create
         public ActionResult Create()
         {
-            ViewBag.CreatedById = new SelectList(db.Users, "Id", "FirstName");
+            //ViewBag.CreatedById = new SelectList(db.Users, "Id", "FullName");
             ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name");
             return View();
         }
@@ -53,12 +54,14 @@ namespace HouseFinanceApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                personalAccount.CreatedById = User.Identity.GetUserId();
                 db.PersonalAccounts.Add(personalAccount);
+                personalAccount.IsDeleted = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CreatedById = new SelectList(db.Users, "Id", "FirstName", personalAccount.CreatedById);
+            //ViewBag.CreatedById = new SelectList(db.Users, "Id", "FullName", personalAccount.CreatedById);
             ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", personalAccount.HouseholdId);
             return View(personalAccount);
         }
@@ -75,7 +78,7 @@ namespace HouseFinanceApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CreatedById = new SelectList(db.Users, "Id", "FirstName", personalAccount.CreatedById);
+            ViewBag.CreatedById = new SelectList(db.Users, "Id", "FullName", personalAccount.CreatedById);
             ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", personalAccount.HouseholdId);
             return View(personalAccount);
         }
@@ -93,7 +96,7 @@ namespace HouseFinanceApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CreatedById = new SelectList(db.Users, "Id", "FirstName", personalAccount.CreatedById);
+            ViewBag.CreatedById = new SelectList(db.Users, "Id", "FullName", personalAccount.CreatedById);
             ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", personalAccount.HouseholdId);
             return View(personalAccount);
         }

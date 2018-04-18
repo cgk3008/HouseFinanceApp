@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HouseFinanceApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace HouseFinanceApp.Controllers
 {
     public class HomeController : Controller
     {
+
+        [AuthHouse]
         public ActionResult Index()
         {
             return View();

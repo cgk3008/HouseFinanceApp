@@ -41,7 +41,7 @@ namespace HouseFinanceApp.Controllers
         {
             ViewBag.AccountId = new SelectList(db.PersonalAccounts, "Id", "Name");
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
-            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FirstName");
+            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FullName");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace HouseFinanceApp.Controllers
 
             ViewBag.AccountId = new SelectList(db.PersonalAccounts, "Id", "Name", transaction.AccountId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
-            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FirstName", transaction.EnteredById);
+            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FullName", transaction.EnteredById);
             return View(transaction);
         }
 
@@ -79,7 +79,7 @@ namespace HouseFinanceApp.Controllers
             }
             ViewBag.AccountId = new SelectList(db.PersonalAccounts, "Id", "Name", transaction.AccountId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
-            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FirstName", transaction.EnteredById);
+            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FullName", transaction.EnteredById);
             return View(transaction);
         }
 
@@ -98,7 +98,7 @@ namespace HouseFinanceApp.Controllers
             }
             ViewBag.AccountId = new SelectList(db.PersonalAccounts, "Id", "Name", transaction.AccountId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
-            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FirstName", transaction.EnteredById);
+            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FullName", transaction.EnteredById);
             return View(transaction);
         }
 

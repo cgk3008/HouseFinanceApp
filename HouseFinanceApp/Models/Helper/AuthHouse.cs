@@ -34,14 +34,14 @@ namespace HouseFinanceApp.Models
 
             else
             {
-                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                 {
                     controller = "Households",
                     action = "CreateJoinHousehold"
                 }
                     ));
             }
-            base.HandleUnauthorizedRequest(filterContext);
+            
         }
 
         public Exception AddUserToHouse(string userId, int houseId)

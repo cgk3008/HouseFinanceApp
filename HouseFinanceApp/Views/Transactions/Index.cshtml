@@ -39,7 +39,7 @@
 										@Html.DisplayNameFor(model => model.Category.Name)
 									</th>
 									<th>
-										@Html.DisplayNameFor(model => model.EnteredBy.FirstName)
+										@Html.DisplayNameFor(model => model.EnteredBy.FullName)
 									</th>
 									<th>
 										@Html.DisplayNameFor(model => model.Description)
@@ -78,7 +78,7 @@
 											@Html.DisplayFor(modelItem => item.Category.Name)
 										</td>
 										<td>
-											@Html.DisplayFor(modelItem => item.EnteredBy.FirstName)
+											@Html.DisplayFor(modelItem => item.EnteredBy.FullName)
 										</td>
 										<td>
 											@Html.DisplayFor(modelItem => item.Description)
