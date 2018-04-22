@@ -1,4 +1,4 @@
-﻿@model HouseFinanceApp.Models.Household
+﻿@model IEnumerable<HouseFinanceApp.Models.Household>
 
 @{
 	ViewBag.Title = "Details";
@@ -31,19 +31,43 @@
 							<div>
 								<h4>Household</h4>
 								<hr />
-								<dl class="dl-horizontal">
+								<dl>
 									<dt>
-										@Html.DisplayNameFor(model => model.Name)
+										Household Name
 									</dt>
 
 									<dd>
-										@Html.DisplayFor(model => model.Name)
+										@*@Html.DisplayFor(model => model.)*@
 									</dd>
-
 								</dl>
+								<table id="mytable" class="dataTables">
+									<thead>
+										<tr>
+											<th>
+												Members
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										@foreach (var item in Model)
+										{
+										<tr>
+											<td>
+												@item.Members
+											</td>
+										</tr>
+										}
+
+									</tbody>
+								</table>
+								<script>
+									$('#mytable').DataTable();
+								</script>
+
 							</div>
 							<p>
-								@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+								@*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
 								@Html.ActionLink("Back to List", "Index")
 							</p>
 						</div>

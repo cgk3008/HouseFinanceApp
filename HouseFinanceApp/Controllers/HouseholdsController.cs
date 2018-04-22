@@ -163,8 +163,7 @@ namespace HouseFinanceApp.Controllers
 
         }
 
-        [Authorize]
-        [HttpPost]
+      
         public async Task<ActionResult> JoinHousehold(HouseholdViewModel vm)
         {
             Household hh = db.Households.Find(vm.HHId);

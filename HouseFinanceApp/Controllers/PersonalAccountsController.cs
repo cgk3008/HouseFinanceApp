@@ -41,7 +41,9 @@ namespace HouseFinanceApp.Controllers
         public ActionResult Create()
         {
             //ViewBag.CreatedById = new SelectList(db.Users, "Id", "FullName");
-            ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name");
+            //var user = User.Identity.GetUserId();
+            //var houseId = db.Households.Find(user);
+            //ViewBag.HouseholdId = new SelectList(user, "Id", "Name", houseId.Id);
             return View();
         }
 
@@ -54,6 +56,9 @@ namespace HouseFinanceApp.Controllers
         {
             if (ModelState.IsValid)
             {
+               
+                //personalAccount.HouseholdId = User.Identity.GetHouseholdId().Value;
+               
                 personalAccount.CreatedById = User.Identity.GetUserId();
                 db.PersonalAccounts.Add(personalAccount);
                 personalAccount.IsDeleted = false;

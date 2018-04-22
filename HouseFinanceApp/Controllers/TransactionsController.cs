@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HouseFinanceApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace HouseFinanceApp.Controllers
 {
@@ -39,7 +40,17 @@ namespace HouseFinanceApp.Controllers
         // GET: Transactions/Create
         public ActionResult Create()
         {
-            ViewBag.AccountId = new SelectList(db.PersonalAccounts, "Id", "Name");
+
+            //var user = User.Identity.GetUserId();
+
+            //var acct = db.PersonalAccounts.Find(user);
+
+            //var acct = User.Identity.GetPersonalAccounts();
+            //ViewBag.CreatedById = new SelectList(user, "Id", "Name", acct.CreatedById);
+             var HouseholdId = User.Identity.GetHouseholdId().Value;
+            var acct = db.PersonalAccounts.Where(h => h.HouseholdId == HouseholdId);
+
+            ViewBag.AccountId = new SelectList(acct, "Id", "Name");
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             ViewBag.EnteredById = new SelectList(db.Users, "Id", "FullName");
             return View();
@@ -54,6 +65,9 @@ namespace HouseFinanceApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                transaction.EnteredById = User.Identity.GetUserId();
+                transaction.IsDeleted = false;
+
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -1,4 +1,9 @@
-﻿
+﻿@model HouseFinanceApp.Models.DashViewModel
+
+@{
+	ViewBag.Title = "Index";
+}
+
 <html>
 <body>
 	<div class="right_col" role="main">
@@ -7,7 +12,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>  @Html.ActionLink("Create New Account", "Create", "PersonalAccounts")</h3>
 						<br /><br />
 						<h3>  @Html.ActionLink("Index of Accounts", "Index", "PersonalAccounts")</h3>
@@ -17,7 +22,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-comments-o"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("Create New Household", "CreateHousehold", "Households")</h3>
 						<br /><br />
 						<h3>@Html.ActionLink("Household Index", "Index", "Households")</h3>
@@ -28,25 +33,268 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("User/Household Role Manager", "Index", "HouseholdRolesViews")</h3>
 						<p>Lorem ipsum psdea itgum rixt.</p>
 					</div>
 				</div>
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
-						<div class="icon"><i class="fa fa-check-square-o"></i></div>
-						<div class="count">179</div>
-						<h3>New Sign ups</h3>
+						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+				<div class="count">179</div>*@
+						<h3>@Html.ActionLink("Create Transaction", "Create", "Transactions")</h3>
 						<p>Lorem ipsum psdea itgum rixt.</p>
 					</div>
+				</div>
+				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="tile-stats">
+						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+				<div class="count">179</div>*@
+						<h3>@Html.ActionLink("Create Category", "Create", "Categories")</h3>
+						<p>Lorem ipsum psdea itgum rixt.</p>
+					</div>
+				</div>
+				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="tile-stats">
+						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+				<div class="count">179</div>*@
+						<h3>@Html.ActionLink("Create Budget", "Create", "Budgets")</h3>
+						<p>Lorem ipsum psdea itgum rixt.</p>
+					</div>
+				</div>
+				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="tile-stats">
+						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+				<div class="count">179</div>*@
+						<h3>@Html.ActionLink("Create Budget Item", "Create", "BudgetItems")</h3>
+						<p>Lorem ipsum psdea itgum rixt.</p>
+					</div>
+				</div>
+				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="tile-stats">
+						<h3>Personal Accounts/Balances</h3>
+						<h3>@Html.ActionLink("Index Transactions", "Index", "Transactions") add view for my transactions (logged in user)</h3>
+						@foreach (var item in Model.PersonalAccounts)
+
+			{
+				if (item.IsDeleted == false)
+				{
+						<li>
+							@Html.DisplayFor(modelItem => item.Name) @*add link to account transactions*@
+							@Html.DisplayFor(modelItem => item.Balance)@*add link to account transactions*@
+
+						</li>
+	}
+}
+
+
+					</div>
+				</div>
+				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="tile-stats">
+						<h3>Recent Transactions</h3>
+
+
+						@foreach (var item in Model.Transactions.Take(10))
+
+			{
+				if (item.IsDeleted == false)
+				{
+					<li>
+						@Html.DisplayFor(modelItem => item.Date)
+						@Html.DisplayFor(modelItem => item.Account.Name)
+						@Html.DisplayFor(modelItem => item.Amount)
+						@Html.DisplayFor(modelItem => item.Description)
+					</li>
+	}
+}
+					</div>
+				</div>
+
+				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="tile-stats">
+						<h3>Personal Accounts/Balances</h3>
+						<h3>@Html.ActionLink("Household Transactions", "Index", "Transactions") @*modeify this link add view for house transactions*@</h3>
+						@foreach (var item in Model.HouseAccounts)
+
+	{
+		if (item.IsDeleted == false)
+		{
+						<li>
+							@Html.DisplayFor(modelItem => item.Name)
+							@Html.DisplayFor(modelItem => item.Balance)
+						</li>
+}
+}
+
+
+
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+			
+
+			Morris HTML
+			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+			<div class="ajaxchart btn btn-sm btn-success" id="arrychart">Current</div>
+			<div class="ajaxchart btn btn-sm btn-success" id="objectchart">Last</div>
+			<div class="jumbotron">
+				<div class="row">
+					<div class="col-md-12">
+						<div id="chart"></div>
+					</div>
+				</div>
+			</div>
+			Morris Scripts
+			<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+			<script>
+ $(document).ready(function () {
+ $(".ajaxchart").click(function () {
+ var url = '@Url.Action("GetChartDataAjax", "Home")' + '?type=' + $(this).html();
+ $.post(url).then(function (response) {
+ $('#chart').empty();
+ new Morris.Bar({
+ element: 'chart',
+ data: response,
+ xkey: 'x',
+ ykeys: ['y'],
+ labels: ['Amount']
+ });
+ })
+ })
+ })
+			</script>
+
+			Fusion HTML
+			<div class="row">
+				<div class="col-md-12">
+					<div id="p-chart-container"></div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
+					<div id="acct-chart-container"></div>
+				</div>
+			</div>
+			Fusion Scripts
+			<script src="~/Scripts/fusioncharts.js"></script>
+			<script src="~/Scripts/fusioncharts.charts.js"></script>
+			<script src="~/Scripts/fusioncharts.widgets.js"></script>
+			<script src="~/Scripts/fusionchart.powercharts.js"></script>
+			<script>
+ $(document).ready(function () {
+ var url = '@Url.Action("FusionDataAjax", "Home")';
+ $.post(url).then(function (response) {
+ console.log(response)
+ data = response;
+ FusionCharts.ready(function (data) {
+ var d = new Date();
+var months = ["January", "February", "March", "April", "May", "June",
+ "July", "August", "September", "October", "November", "December"];
+ var monthName = months[d.getMonth()];
+var year = d.getFullYear();
+var revenueChart = new FusionCharts({
+ type: 'column3d',
+ renderAt: 'p-chart-container',
+ width: '1020',
+ height: '500',
+ dataFormat: 'json',
+ dataSource: {
+			 "chart": {
+				 "caption": "NYC_Budget Chart",
+				 "subCaption": "/Transactions/",
+				 "xAxisName": monthName + ' ' + year,
+				 "yAxisName": "Values (In USD)",
+				 "paletteColors": "#0075c2",
+				 "valueFontColor": "#ffffff",
+				 "baseFont": "Helvetica Neue,Arial",
+				 "captionFontSize": "14",
+				 "subcaptionFontSize": "14",
+				 "subcaptionFontBold": "0",
+				 "placeValuesInside": "1",
+				 "rotateValues": "1",
+				 "showShadow": "0",
+				 "divlineColor": "#999999",
+				 "divLineIsDashed": "1",
+				 "divlineThickness": "1",
+				 "divLineDashLen": "1",
+				 "divLineGapLen": "1",
+				 "canvasBgColor": "#ffffff"
+			 },
+			 "data": response
+		 }
+	 });
+	 revenueChart.render();
+	 });
+ })
+ })
+			</script>
+
+
+			<script>
+ $(document).ready(function () {
+ var url = '@Url.Action("AccountDataAjax", "Home")';
+ $.post(url).then(function (response) {
+ console.log(response)
+ data = response;
+ FusionCharts.ready(function (data) {
+ var d = new Date();
+var months = ["January", "February", "March", "April", "May", "June",
+ "July", "August", "September", "October", "November", "December"];
+ var monthName = months[d.getMonth()];
+var year = d.getFullYear();
+var revenueChart = new FusionCharts({
+ type: 'column3d',
+ renderAt: 'acct-chart-container',
+ width: '1020',
+ height: '500',
+ dataFormat: 'json',
+ dataSource: {
+ "chart": {
+"caption": "NYC_Budget Chart",
+"subCaption": "/Account/",
+"xAxisName": monthName + ' ' + year,
+"yAxisName": "Values (In USD)",
+"paletteColors": "#0075c2",
+"valueFontColor": "#ffffff",
+"baseFont": "Helvetica Neue,Arial",
+"captionFontSize": "14",
+"subcaptionFontSize": "14",
+"subcaptionFontBold": "0",
+"placeValuesInside": "1",
+"rotateValues": "1",
+"showShadow": "0",
+"divlineColor": "#999999",
+"divLineIsDashed": "1",
+"divlineThickness": "1",
+"divLineDashLen": "1",
+"divLineGapLen": "1",
+"canvasBgColor": "#ffffff"
+ },
+ "data": response
+ }
+ });
+ revenueChart.render();
+ });
+ })
+ })
+			</script>
+
+
+
+
+			<div class="row">
+				<div class="col-md-12">
 					<div class="x_panel">
 						<div class="x_title">
-							<h2>Transaction Summary <small>Weekly progress</small></h2>
+							<h2>My Budget <small>Monthly</small></h2>
 							<div class="filter">
 								<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
 									<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
@@ -55,125 +303,52 @@
 							</div>
 							<div class="clearfix"></div>
 						</div>
-						<div class="x_content">
-							<div class="col-md-9 col-sm-12 col-xs-12">
-								<div class="demo-container" style="height:280px">
-									<div id="chart_plot_02" class="demo-placeholder"></div>
-								</div>
-								<div class="tiles">
-									<div class="col-md-4 tile">
-										<span>Total Sessions</span>
-										<h2>231,809</h2>
-										<span class="sparkline11 graph" style="height: 160px;">
-											<canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-										</span>
-									</div>
-									<div class="col-md-4 tile">
-										<span>Total Revenue</span>
-										<h2>$231,809</h2>
-										<span class="sparkline22 graph" style="height: 160px;">
-											<canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-										</span>
-									</div>
-									<div class="col-md-4 tile">
-										<span>Total Sessions</span>
-										<h2>231,809</h2>
-										<span class="sparkline11 graph" style="height: 160px;">
-											<canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-										</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-12 col-xs-12">
-								<div>
-									<div class="x_title">
-										<h2>Top Profiles</h2>
-										<ul class="nav navbar-right panel_toolbox">
-											<li>
-												<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-											</li>
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-												<ul class="dropdown-menu" role="menu">
-													<li>
-														<a href="#">Settings 1</a>
-													</li>
-													<li>
-														<a href="#">Settings 2</a>
-													</li>
-												</ul>
-											</li>
-											<li>
-												<a class="close-link"><i class="fa fa-close"></i></a>
-											</li>
-										</ul>
-										<div class="clearfix"></div>
-									</div>
-									<ul class="list-unstyled top_profiles scroll-view">
-										<li class="media event">
-											<a class="pull-left border-aero profile_thumb">
-												<i class="fa fa-user aero"></i>
-											</a>
-											<div class="media-body">
-												<a class="title" href="#">Ms. Mary Jane</a>
-												<p><strong>$2300. </strong> Agent Avarage Sales </p>
-												<p>
-													<small>12 Sales Today</small>
-												</p>
-											</div>
+
+
+
+
+
+
+
+
+						<!-- bar charts group -->
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>Bar Chart Group <small>Sessions</small></h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li>
+											<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 										</li>
-										<li class="media event">
-											<a class="pull-left border-green profile_thumb">
-												<i class="fa fa-user green"></i>
-											</a>
-											<div class="media-body">
-												<a class="title" href="#">Ms. Mary Jane</a>
-												<p><strong>$2300. </strong> Agent Avarage Sales </p>
-												<p>
-													<small>12 Sales Today</small>
-												</p>
-											</div>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li>
+													<a href="#">Settings 1</a>
+												</li>
+												<li>
+													<a href="#">Settings 2</a>
+												</li>
+											</ul>
 										</li>
-										<li class="media event">
-											<a class="pull-left border-blue profile_thumb">
-												<i class="fa fa-user blue"></i>
-											</a>
-											<div class="media-body">
-												<a class="title" href="#">Ms. Mary Jane</a>
-												<p><strong>$2300. </strong> Agent Avarage Sales </p>
-												<p>
-													<small>12 Sales Today</small>
-												</p>
-											</div>
-										</li>
-										<li class="media event">
-											<a class="pull-left border-aero profile_thumb">
-												<i class="fa fa-user aero"></i>
-											</a>
-											<div class="media-body">
-												<a class="title" href="#">Ms. Mary Jane</a>
-												<p><strong>$2300. </strong> Agent Avarage Sales </p>
-												<p>
-													<small>12 Sales Today</small>
-												</p>
-											</div>
-										</li>
-										<li class="media event">
-											<a class="pull-left border-green profile_thumb">
-												<i class="fa fa-user green"></i>
-											</a>
-											<div class="media-body">
-												<a class="title" href="#">Ms. Mary Jane</a>
-												<p><strong>$2300. </strong> Agent Avarage Sales </p>
-												<p>
-													<small>12 Sales Today</small>
-												</p>
-											</div>
+										<li>
+											<a class="close-link"><i class="fa fa-close"></i></a>
 										</li>
 									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content1">
+									<div id="graph_bar_group" style="width:100%; height:280px;"></div>
 								</div>
 							</div>
 						</div>
+						<div class="clearfix"></div>
+						<!-- /bar charts group -->
+
+
+
+
+
 					</div>
 				</div>
 			</div>
@@ -476,5 +651,72 @@
 		</div>
 	</div>
 	<!-- /page content -->
+
+
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+	<script>
+ $(document).ready(function () {
+ $.get('@Url.Action("GetChart", "Home")').then(function (response) {
+ $('#exp').text('$' + response.totalExpense);
+ $('#bud').text('$' + response.totalBudget);
+ $('#acc').text('$' + response.totalAcc);
+ new Morris.Bar({
+ // ID of the element in which to draw the chart.
+	 element: 'graph_bar_group',
+ // Chart data records -- each entry in this array corresponds to
+ a point on the chart.
+ data: response.bar,
+
+			 // The name of the data record attribute that contains x-values.
+			 xkey: 'Name',
+			 // A list of names of data record attributes that contain y
+			 values.
+				 ykeys: ['Actual', 'Budgeted'],
+			 // Labels for the ykeys -- will be displayed when you hover over
+			 the chart.
+				 labels: ['Expenses to Date', 'Amount Budgeted'],
+			 resize: true
+		 });
+		 new Morris.Donut({
+			 element: 'chart2',
+			 data: response.donut,
+			 //label: 'Name',
+			 //value: 'Value',
+			 resize: true
+		 });
+	 });
+
+	 $.post('@Url.Action("GetMonthly","Home")').then(function (response) {
+ console.log(response);
+ new Morris.Bar({
+ // ID of the element in which to draw the chart.
+element: 'MonthlyChart',
+// Chart data records -- each entry in this array corresponds to
+ a point on the chart.
+ data: response,
+// The name of the data record attribute that contains x-values.
+xkey: 'month',
+// A list of names of data record attributes that contain y
+values.
+ ykeys: ['income', 'expense', 'budget'],
+ // Labels for the ykeys -- will be displayed when you hover over
+ the chart.
+ labels: ['Income to Date', 'Expenses to Date', 'Amount Budgeted'],
+ resize: true
+ });
+ });
+ });
+	</script>
+
+
+
+
+
+
+
 </body>
 </html>
+
+

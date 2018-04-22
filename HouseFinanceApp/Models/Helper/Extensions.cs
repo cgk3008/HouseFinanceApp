@@ -43,6 +43,18 @@ namespace HouseFinanceApp.Models
                 return null;
         }
 
+        //public static List<Claim> GetPersonalAccounts(this IIdentity user)
+        //{
+        //    var claimsIdentity = (ClaimsIdentity)user;
+        //    var PersonalAccountClaim = claimsIdentity.Claims
+        //      .Where(c => c.Type == "Accounts").ToList();
+        //    if (PersonalAccountClaim != null)
+        //        return (PersonalAccountClaim);
+        //    else
+        //        return null;
+        //}
+
+
         public static bool IsInHousehold(this IIdentity user)
         {
             var cUser = (ClaimsIdentity)user;

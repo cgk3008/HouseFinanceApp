@@ -61,6 +61,10 @@ namespace HouseFinanceApp.Models
 
     }
 
+   
+
+
+
     public class Invite
     {
         public int Id { get; set; }
@@ -123,6 +127,7 @@ namespace HouseFinanceApp.Models
         public bool Reconciled { get; set; }
         public decimal ReconciledAmount { get; set; }
         public bool IsDeleted { get; set; }
+        public DateTimeOffset Created { get; set; }
 
         public virtual PersonalAccount Account { get; set; }
         public virtual Category Category { get; set; }
