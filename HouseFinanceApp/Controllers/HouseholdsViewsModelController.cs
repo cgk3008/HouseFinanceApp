@@ -18,7 +18,7 @@ namespace HouseFinanceApp.Controllers
             return View();
         }
 
-
+       
 
         //    [HttpGet]
         //    public ActionResult GetChart()

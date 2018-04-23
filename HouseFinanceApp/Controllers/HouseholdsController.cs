@@ -23,6 +23,31 @@ namespace HouseFinanceApp.Controllers
             return View(db.Households.ToList());
         }
 
+        // GET: MyHousehold
+        public ActionResult MyHousehold()
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var hh = db.Households.Where(h => h.Id == user.HouseholdId);
+            var houseName = db.Households.Where(hn => hn.Name == user.Household.Name);
+
+            HouseholdViewModel model = new HouseholdViewModel()
+            {
+                //HHName = houseName,
+
+            };
+            //      public ApplicationUser Member { get; set; }
+
+            //public bool IsJoinHouse { get; set; }
+            //public int? HHId { get; set; }
+            //public string HHName { get; set; }
+            //public string EmailForInvitedResident { get; set; }
+
+
+            return View(model);
+        }
+
+
+
         // GET: Households/Details/5
         public ActionResult Details(int? id)
         {
@@ -31,6 +56,7 @@ namespace HouseFinanceApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Household household = db.Households.Find(id);
+
             if (household == null)
             {
                 return HttpNotFound();
@@ -122,6 +148,7 @@ namespace HouseFinanceApp.Controllers
                     vm.IsJoinHouse = true;
                     vm.HHId = result.HouseholdId;
                     vm.HHName = result.Household.Name;
+                    //vm.EmailForInvitedResident = result.Email;
 
                     //Set USED flag to true for this invite
 
@@ -163,7 +190,7 @@ namespace HouseFinanceApp.Controllers
 
         }
 
-      
+
         public async Task<ActionResult> JoinHousehold(HouseholdViewModel vm)
         {
             Household hh = db.Households.Find(vm.HHId);
@@ -177,7 +204,7 @@ namespace HouseFinanceApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        
+
         public ActionResult InviteError()
         {
             return View();

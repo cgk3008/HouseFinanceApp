@@ -208,13 +208,13 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DashViewModel - Copy.cs" />
     <Compile Include="Models\Helper\AuthHouse.cs" />
     <Compile Include="Models\Helper\Extensions.cs" />
     <Compile Include="Models\Finance.cs" />
     <Compile Include="Models\Helper\Refresh.cs" />
     <Compile Include="Models\Helper\UserHelper.cs" />
     <Compile Include="Models\DashViewModel.cs" />
+    <Compile Include="Models\HouseholdViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4649,9 +4649,11 @@
     <Content Include="Views\Transactions\Edit.cshtml" />
     <Content Include="Views\Transactions\Index.cshtml" />
     <Content Include="Views\Households\CreateJoinHousehold.cshtml" />
-    <Content Include="Views\Households\View.cshtml" />
     <Content Include="Views\Households\JoinHousehold.cshtml" />
     <Content Include="Views\Households\InviteError.cshtml" />
+    <Content Include="Views\Households\MyHousehold.cshtml" />
+    <Content Include="Views\Transactions\AccountTransactions.cshtml" />
+    <Content Include="Views\PersonalAccounts\HouseAccounts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

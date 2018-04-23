@@ -22,6 +22,37 @@ namespace HouseFinanceApp.Controllers
             return View(transactions.ToList());
         }
 
+        // GET: HouseTransactions
+        public ActionResult HouseTransactions()
+        {
+            var userId = User.Identity.GetUserId();
+            //var acctIdByHouseId = db.Users.Find(id)/*.Accounts.ToList()*/;
+            var userHouse = db.Households.Where(h => h.Id == User.Identity.GetHouseholdId());
+
+
+            var transactions = db.Transactions.Where(t => t.Account.HouseholdId == User.Identity.GetHouseholdId()).Include(t => t.Account).Include(t => t.Category).Include(t => t.EnteredBy);
+
+
+            return View(transactions.ToList());
+        }
+
+        // GET: AccountTransactions
+        public ActionResult AccountTransactions(int? id) //need to pass account ID from HouseAccounts or MyAccounts View to this action
+        {
+            
+            //setup a Trnsactions view model????
+
+            var transactions = db.Transactions.Where(t => t.AccountId == id).Include(t => t.Account).Include(t => t.Category).Include(t => t.EnteredBy);
+            
+            //foreach (Transaction transaction in transactions)
+            //{
+
+            //}
+
+                return View(transactions.ToList());
+        }
+
+
         // GET: Transactions/Details/5
         public ActionResult Details(int? id)
         {
@@ -47,7 +78,7 @@ namespace HouseFinanceApp.Controllers
 
             //var acct = User.Identity.GetPersonalAccounts();
             //ViewBag.CreatedById = new SelectList(user, "Id", "Name", acct.CreatedById);
-             var HouseholdId = User.Identity.GetHouseholdId().Value;
+            var HouseholdId = User.Identity.GetHouseholdId().Value;
             var acct = db.PersonalAccounts.Where(h => h.HouseholdId == HouseholdId);
 
             ViewBag.AccountId = new SelectList(acct, "Id", "Name");

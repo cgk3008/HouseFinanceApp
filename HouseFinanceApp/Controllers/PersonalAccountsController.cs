@@ -22,6 +22,22 @@ namespace HouseFinanceApp.Controllers
             return View(personalAccounts.ToList());
         }
 
+        // GET: HouseholdPersonalAccounts
+        public ActionResult HouseAccounts()
+        {
+            //var personalAccounts = db.PersonalAccounts.Include(p => p.CreatedBy).Include(p => p.Household);
+            //return View(personalAccounts.ToList());
+
+            var userHousehold = User.Identity.GetHouseholdId();
+
+            var houseAccounts = db.PersonalAccounts.Where(h => h.HouseholdId == userHousehold).ToList();
+
+            return View(houseAccounts);
+
+        }
+
+
+
         // GET: PersonalAccounts/Details/5
         public ActionResult Details(int? id)
         {
@@ -56,9 +72,9 @@ namespace HouseFinanceApp.Controllers
         {
             if (ModelState.IsValid)
             {
-               
+
                 //personalAccount.HouseholdId = User.Identity.GetHouseholdId().Value;
-               
+
                 personalAccount.CreatedById = User.Identity.GetUserId();
                 db.PersonalAccounts.Add(personalAccount);
                 personalAccount.IsDeleted = false;
@@ -131,6 +147,11 @@ namespace HouseFinanceApp.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
+
+
 
         protected override void Dispose(bool disposing)
         {

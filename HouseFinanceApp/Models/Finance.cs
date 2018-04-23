@@ -49,6 +49,7 @@ namespace HouseFinanceApp.Models
             Members = new HashSet<ApplicationUser>();
             Budgets = new HashSet<Budget>();
             Accounts = new HashSet<PersonalAccount>();
+            Invites = new HashSet<Invite>();
         }
 
         public int Id { get; set; }
@@ -58,7 +59,12 @@ namespace HouseFinanceApp.Models
         public virtual ICollection<ApplicationUser> Members { get; set; }
         public virtual ICollection<PersonalAccount> Accounts { get; set; }
         public virtual ICollection<Budget> Budgets { get; set; }
+        public virtual ICollection<Invite> Invites { get; set; }
 
+        public static implicit operator string(Household v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
    

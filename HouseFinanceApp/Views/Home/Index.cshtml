@@ -72,6 +72,23 @@
 				</div>
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
+						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+				<div class="count">179</div>*@
+						<h3>@Html.ActionLink("My Household", "MyHousehold", "Households")</h3>
+						<p>Lorem ipsum psdea itgum rixt.</p>
+					</div>
+				</div>
+				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="tile-stats">
+						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+				<div class="count">179</div>*@
+						<h3>@Html.ActionLink("Accounts in My Household", "HouseAccounts", "PersonalAccounts")</h3>
+						<p>Lorem ipsum psdea itgum rixt.</p>
+					</div>
+				</div>
+
+				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="tile-stats">
 						<h3>Personal Accounts/Balances</h3>
 						<h3>@Html.ActionLink("Index Transactions", "Index", "Transactions") add view for my transactions (logged in user)</h3>
 						@foreach (var item in Model.PersonalAccounts)
@@ -79,11 +96,11 @@
 			{
 				if (item.IsDeleted == false)
 				{
-						<li>
-							@Html.DisplayFor(modelItem => item.Name) @*add link to account transactions*@
-							@Html.DisplayFor(modelItem => item.Balance)@*add link to account transactions*@
+					<li>
+						@Html.DisplayFor(modelItem => item.Name) @*add link to account transactions*@
+						@Html.DisplayFor(modelItem => item.Balance)@*add link to account transactions*@
 
-						</li>
+					</li>
 	}
 }
 
@@ -117,14 +134,14 @@
 						<h3>@Html.ActionLink("Household Transactions", "Index", "Transactions") @*modeify this link add view for house transactions*@</h3>
 						@foreach (var item in Model.HouseAccounts)
 
-	{
-		if (item.IsDeleted == false)
-		{
-						<li>
-							@Html.DisplayFor(modelItem => item.Name)
-							@Html.DisplayFor(modelItem => item.Balance)
-						</li>
-}
+			{
+				if (item.IsDeleted == false)
+				{
+					<li>
+						@Html.DisplayFor(modelItem => item.Name)
+						@Html.DisplayFor(modelItem => item.Balance)
+					</li>
+	}
 }
 
 
