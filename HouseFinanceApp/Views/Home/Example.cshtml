@@ -1,0 +1,268 @@
+﻿<div class="jumbotron">
+    <h1>Sample Financial Portal Dashboard</h1>
+    <p class="lead">Once our REST API is up and running we can grab data from it and use it to power our application dashboard...</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Show some Household data</h3>
+        <input type="text" id="houseNum" />
+        <input type="button" value="Search" onclick="find();" />
+        <p id="houses"></p>
+    </div>
+
+    <div class="col-md-4">
+        <h3>Show some Account data</h3>
+        <input type="text" id="houseNum2" />
+        <input type="button" value="Search" onclick="findAccounts();" />
+        @*<ul id="accounts"></ul>*@
+        <p id="accounts"></p>
+    </div>
+
+    <div class="row">
+        <div id="MyChart" style="height: 250px;" class="col-md-6">
+
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+    
+    <div id="chartContainer">FusionCharts example here!</div>
+
+    <div id="financeapiContainr">My Finance data displayed in a fusion chart!</div>
+    
+    <p>If this works I should see data below...</p>
+    <div>
+        <ul id="rawapidata"></ul>
+    </div>
+    
+    <div id="myRealTimeApiData">My data displayed in a fusion chart!</div>
+
+</div>
+
+@section scripts{
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+    <!-- Fusion charts-->
+    <script src="~/Scripts/js/fusioncharts.js"></script>
+    <script src="~/Scripts/js/fusioncharts.charts.js"></script>
+    <script src="~/Scripts/js/fusioncharts.widgets.js"></script>
+    <script src="~/Scripts/js/fusioncharts.powercharts.js"></script>
+    <script src="~/Scripts/js/themes/fusioncharts.theme.fint.js"></script>
+
+    <script>
+
+        @*var uri = '../Api/FinancialPortal/Households/json?id=';
+        var uri2 = '../Api/FinancialPortal/Accounts/json?householdId=';
+
+        function find() {
+            var id = $('#houseNum').val();
+            $.getJSON(uri + id)
+                .done(function(data) {
+                    var jsonObj = $.parseJSON(data);
+                    $('#houses').text('Name: ' + jsonObj.Name + ' --> Id: ' + jsonObj.Id);
+                })
+                .fail(function(jqXhr, textStatus, err) {
+                    $('#houses').text('Error: ' + err);
+                });
+        }
+
+        function findAccounts() {
+            var id = $('#houseNum2').val();
+            $.getJSON(uri2 + id)
+                .done(function (data) {
+                    $.each(data, function (key, item) {
+                        //// Add a list item for the product. 
+                        //$('<li>', { text: formatItem(item) }).appendTo($('#products'));
+                        $('#accounts').text('Name: ' + item.Name + "Balance: " + item.Balance);
+                    });
+
+                    //var jsonObj = $.parseJSON(data);
+                    //$('#accounts').text(data);
+                })
+                .fail(function(jqXhr, textStatus, err) {
+                    $('#accounts').text('Error: ' + err);
+                });
+        }
+
+        function testCharting() {
+            $(".ajaxchart").click(function() {
+                var url = '@Url.Action("GetChartDataAjax", "Home")' + '?type=' + $(this).html();
+                $.post(url).then(function(response) {
+                    $('#chart').empty();
+                    new Morris.Bar({
+                        element: 'chart',
+                        data: response,
+                        xkey: 'x',
+                        ykeys: ['y'],
+                        labels: ['Amount']
+                    });
+                })
+            })
+        }*@
+      
+        FusionCharts.ready(function() {
+            var revenueChart = new FusionCharts({
+                "type": "column2d",
+                "renderAt": "chartContainer",
+                "width": "500",
+                "height": "300",
+                "dataFormat": "json",
+                "dataSource": {
+                    "chart": {
+                        "caption": "Monthly revenue for last year",
+                        "subCaption": "Harry's SuperMart",
+                        "xAxisName": "Month",
+                        "yAxisName": "Revenues (In USD)",
+                        "theme": "fint"
+                    },
+                    "data": [
+                        {
+                            "label": "Jan",
+                            "value": "420000"
+                        },
+                        {
+                            "label": "Feb",
+                            "value": "810000"
+                        },
+                        {
+                            "label": "Mar",
+                            "value": "720000"
+                        },
+                        {
+                            "label": "Apr",
+                            "value": "550000"
+                        },
+                        {
+                            "label": "May",
+                            "value": "910000"
+                        },
+                        {
+                            "label": "Jun",
+                            "value": "510000"
+                        },
+                        {
+                            "label": "Jul",
+                            "value": "680000"
+                        },
+                        {
+                            "label": "Aug",
+                            "value": "620000"
+                        },
+                        {
+                            "label": "Sep",
+                            "value": "610000"
+                        },
+                        {
+                            "label": "Oct",
+                            "value": "490000"
+                        },
+                        {
+                            "label": "Nov",
+                            "value": "-100000"
+                        },
+                        {
+                            "label": "Dec",
+                            "value": "730000"
+                        }
+                    ]
+                }
+            });
+
+            revenueChart.render();
+        });
+
+        FusionCharts.ready(function () {
+            var revenueChart = new FusionCharts({
+                "type": "column2d",
+                "renderAt": "financeapiContainr",
+                "width": "500",
+                "height": "300",
+                "dataFormat": "json",
+                "dataSource": {
+                    "chart": {
+                        "caption": "Household Accounts",
+                        "subCaption": "Name & Balance",
+                        "xAxisName": "Month",
+                        "yAxisName": " Balances (In USD)",
+                        "theme": "fint"
+                    },
+                    "data": [
+                        {
+                            "label": "My New Acct",
+                            "value": "10000.00"
+                        },
+                        {
+                            "label": "Car Account",
+                            "value": "-5000.00"
+                        },
+                        {
+                            "label": "Rainy Day",
+                            "value": "420.00"
+                        },
+                        {
+                            "label": "API Account",
+                            "value": "1200.00"
+                        },
+                        {
+                            "label": "Test Account",
+                            "value": "5000.00"
+                        }
+                    ]
+                }
+            });
+
+            revenueChart.render();
+        });
+
+     
+        $(document).ready(function () {
+
+            var uri = '../Api/FinancialPortal/AccountChartData?householdId=2';
+            // Send an AJAX request 
+            $.getJSON(uri).done(function (data) {
+                // On success, 'data' contains a list of products. 
+                $.each(data, function (key, item) {
+                    // Add a list item for the product. 
+                    $('<li>', { text: formatItem(item) }).appendTo($('#rawapidata'));
+                });
+            });
+        });
+
+        function formatItem(item) { return item.Label + ': $' + item.Value; }
+
+        $(document).ready(function () {
+            var endpoint = '../Api/FinancialPortal/AccountChartData?householdId=2';
+            // Send an AJAX request 
+            $.getJSON(endpoint).done(function (data) {
+                // On success, 'data' contains a list of products. 
+                //FusionCharts.ready(function () {
+                    var revenueChart = new FusionCharts({
+                        "type": "column3d",
+                        "renderAt": "myRealTimeApiData",
+                        "width": "500",
+                        "height": "300",
+                        "dataFormat": "json",
+                        "dataSource": {
+                            "chart": {
+                                "caption": "Real Time Household data",
+                                "subCaption": "Account(s) Summary",
+                                "xAxisName": "Name",
+                                "yAxisName": " Balances (In USD)",
+                                "theme": "fint"
+                            },
+                            "data": data
+                        }
+                    });
+
+                    revenueChart.render();
+                //});            
+            });
+        });
+
+
+    </script>
+}
+

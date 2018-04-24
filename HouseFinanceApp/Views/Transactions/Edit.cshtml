@@ -142,12 +142,10 @@
 							}
 
 							<div>
-								@Html.ActionLink("Back to List", "Index")
+								@Html.ActionLink("Back to List", "AccountTransactions", new { id = Model.AccountId }, new { @class = "btn btn-default" })
 							</div>
 
-							@section Scripts {
-								@Scripts.Render("~/bundles/jqueryval")
-							}
+						
 
 						</div>
 					</div>
@@ -156,7 +154,7 @@
 		</div>
 	</div>
 	<div>
-		@Html.ActionLink("Back to List", "Index")
+		@Html.ActionLink("Back to Account Transactions", "AccountTransactions", "Transactions")
 	</div>
 
 	@section Scripts {

@@ -41,6 +41,7 @@ namespace HouseFinanceApp.Controllers
         {
             
             //setup a Trnsactions view model????
+            
 
             var transactions = db.Transactions.Where(t => t.AccountId == id).Include(t => t.Account).Include(t => t.Category).Include(t => t.EnteredBy);
             
@@ -134,12 +135,13 @@ namespace HouseFinanceApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,AccountId,Description,Date,Amount,Type,Void,CategoryId,EnteredById,Reconciled,ReconciledAmount,IsDeleted")] Transaction transaction)
-        {
+        {  
             if (ModelState.IsValid)
             {
                 db.Entry(transaction).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return RedirectToAction("AccountTransactions", new { id = transaction.AccountId });
             }
             ViewBag.AccountId = new SelectList(db.PersonalAccounts, "Id", "Name", transaction.AccountId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
@@ -170,7 +172,7 @@ namespace HouseFinanceApp.Controllers
             Transaction transaction = db.Transactions.Find(id);
             db.Transactions.Remove(transaction);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("AccountTransactions", new { id = transaction.AccountId });
         }
 
         protected override void Dispose(bool disposing)

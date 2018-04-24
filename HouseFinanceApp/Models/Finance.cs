@@ -140,4 +140,13 @@ namespace HouseFinanceApp.Models
         public virtual ApplicationUser EnteredBy { get; set; }
 
     }
+
+
+    public class FusionData
+    {
+        public virtual Transaction Transactions { get; set; }
+        public string Label { get; set; }
+        public string Value { get; set; }
+
+    }
 }

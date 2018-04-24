@@ -80,29 +80,29 @@ namespace HouseFinanceApp.Controllers
         //}
 
 
-        //public JsonResult FusionDataAjax()
-        //{
-        //    var trx = db.Households.Find(User.Identity.GetHouseholdId())
-        //    .Accounts.SelectMany(t => t.Transactions);
-        //    //.Where(t => t.Date.Month == DateTime.Now.Month);
-        //    List<FusionData> data = new List<FusionData>();
-        //    foreach (Transaction t in trx)
-        //    {
-        //        data.Add(new FusionData() { label = t.Category.Name, value = t.Amount.ToString() });
-        //    }
-        //    return Json(data);
-        //}
-        //public JsonResult AccountDataAjax()
-        //{
-        //    var trx = db.Households.Find(User.Identity.GetHouseholdId())
-        //    .Accounts;
-        //    List<FusionData> data = new List<FusionData>();
-        //    foreach (PersonalAccount t in trx)
-        //    {
-        //        data.Add(new FusionData() { label = t.Name, value = t.Balance.ToString() });
-        //    }
-        //    return Json(data);
-        //}
+        public JsonResult FusionDataAjax()
+        {
+            var trx = db.Households.Find(User.Identity.GetHouseholdId())
+            .Accounts.SelectMany(t => t.Transactions);
+            //.Where(t => t.Date.Month == DateTime.Now.Month);
+            List<FusionData> data = new List<FusionData>();
+            foreach (Transaction t in trx)
+            {
+                data.Add(new FusionData() { Label = t.Category.Name, Value = t.Amount.ToString() });
+            }
+            return Json(data);
+        }
+        public JsonResult AccountDataAjax()
+        {
+            var trx = db.Households.Find(User.Identity.GetHouseholdId())
+            .Accounts;
+            List<FusionData> data = new List<FusionData>();
+            foreach (PersonalAccount t in trx)
+            {
+                data.Add(new FusionData() { Label = t.Name, Value = t.Balance.ToString() });
+            }
+            return Json(data);
+        }
 
 
         public ActionResult About()
