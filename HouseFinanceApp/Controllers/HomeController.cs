@@ -50,34 +50,41 @@ namespace HouseFinanceApp.Controllers
 
         }
 
-        //public JsonResult GetChartDataAjax(string type)
-        //{
-        //    if (type == "Current")
-        //    {
-        //        var trx = db.Households.Find(User.Identity.GetHouseholdId())
-        //        .Accounts.SelectMany(t => t.Transactions)
-        //        .Where(t => t.Date.Month == DateTime.Now.Month);
-        //        List<ChartData> data = new List<ChartData>();
-        //        foreach (Transaction t in trx)
-        //        {
-        //            data.Add(new ChartData() { x = t.Category.Name, y = t.Amount.ToString() });
-        //        }
-        //        return Json(data);
-        //    }
-        //    else if (type == "Last")
-        //    {
-        //        var trx = db.Households.Find(User.Identity.GetHouseholdId())
-        //        .Accounts.SelectMany(t => t.Transactions)
-        //        .Where(t => t.Date.Month == DateTime.Now.Month - 1);
-        //        List<ChartData> data = new List<ChartData>();
-        //        foreach (Transaction t in trx)
-        //        {
-        //            data.Add(new ChartData() { x = t.Category.Name, y = t.Amount.ToString() });
-        //        }
-        //        return Json(data);
-        //    }
-        //    return null;
-        //}
+        public ActionResult Dash2()
+        {
+            return View();
+        }
+
+
+
+        public JsonResult GetChartDataAjax(string type)
+        {
+            if (type == "Current")
+            {
+                var trx = db.Households.Find(User.Identity.GetHouseholdId())
+                .Accounts.SelectMany(t => t.Transactions)
+                .Where(t => t.Date.Month == DateTime.Now.Month);
+                List<ChartData> data = new List<ChartData>();
+                foreach (Transaction t in trx)
+                {
+                    data.Add(new ChartData() { X = t.Category.Name, Y = t.Amount/*.ToString()*/ });
+                }
+                return Json(data);
+            }
+            else if (type == "Last")
+            {
+                var trx = db.Households.Find(User.Identity.GetHouseholdId())
+                .Accounts.SelectMany(t => t.Transactions)
+                .Where(t => t.Date.Month == DateTime.Now.Month - 1);
+                List<ChartData> data = new List<ChartData>();
+                foreach (Transaction t in trx)
+                {
+                    data.Add(new ChartData() { X = t.Category.Name, Y = t.Amount/*.ToString()*/ });
+                }
+                return Json(data);
+            }
+            return null;
+        }
 
 
         public JsonResult FusionDataAjax()
@@ -88,10 +95,11 @@ namespace HouseFinanceApp.Controllers
             List<FusionData> data = new List<FusionData>();
             foreach (Transaction t in trx)
             {
-                data.Add(new FusionData() { Label = t.Category.Name, Value = t.Amount.ToString() });
+                data.Add(new FusionData() { Label = t.Category.Name, Value = t.Amount/*.ToString()*/ });
             }
             return Json(data);
         }
+
         public JsonResult AccountDataAjax()
         {
             var trx = db.Households.Find(User.Identity.GetHouseholdId())
@@ -99,10 +107,26 @@ namespace HouseFinanceApp.Controllers
             List<FusionData> data = new List<FusionData>();
             foreach (PersonalAccount t in trx)
             {
-                data.Add(new FusionData() { Label = t.Name, Value = t.Balance.ToString() });
+                data.Add(new FusionData() { Label = t.Name, Value = t.Balance/*.ToString()*/ });
             }
             return Json(data);
         }
+
+        public JsonResult HouseChart()
+        {
+            var HouseId = db.Households.Find(User.Identity.GetHouseholdId())
+            .Accounts;
+            List<HouseChart> data = new List<HouseChart>();
+            foreach (PersonalAccount a in HouseId)
+            {
+                data.Add(new HouseChart() { Label = a.Name, Value = a.Balance/*.ToString()*/ });
+            }
+            return Json(data);
+        }
+
+
+
+
 
 
         public ActionResult About()

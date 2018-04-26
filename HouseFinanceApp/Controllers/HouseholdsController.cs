@@ -190,7 +190,7 @@ namespace HouseFinanceApp.Controllers
 
         }
 
-
+        //:
         public async Task<ActionResult> JoinHousehold(HouseholdViewModel vm)
         {
             Household hh = db.Households.Find(vm.HHId);
@@ -202,6 +202,23 @@ namespace HouseFinanceApp.Controllers
             await ControllerContext.HttpContext.RefreshAuthentication(user);
 
             return RedirectToAction("Index", "Home");
+        }
+
+
+        // Leave household and immediately create a new household
+        public async Task<ActionResult> LeaveHousehold(HouseholdViewModel vm)
+        {
+            Household hh = db.Households.Find(vm.HHId);
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            hh.Members.Remove(user);
+
+
+            db.SaveChanges();
+
+            await ControllerContext.HttpContext.RefreshAuthentication(user);
+
+            return RedirectToAction("CreateJoinHousehold", "Households");
         }
 
 

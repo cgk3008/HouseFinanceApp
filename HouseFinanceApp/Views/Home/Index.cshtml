@@ -12,7 +12,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>  @Html.ActionLink("Create New Account", "Create", "PersonalAccounts")</h3>
 						<br /><br />
 						<h3>  @Html.ActionLink("Index of Accounts", "Index", "PersonalAccounts")</h3>
@@ -22,7 +22,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-comments-o"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("Create New Household", "CreateHousehold", "Households")</h3>
 						<br /><br />
 						<h3>@Html.ActionLink("Household Index", "Index", "Households")</h3>
@@ -33,7 +33,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("User/Household Role Manager", "Index", "HouseholdRolesViews")</h3>
 						<p>Lorem ipsum psdea itgum rixt.</p>
 					</div>
@@ -41,7 +41,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("Create Transaction", "Create", "Transactions")</h3>
 						<p>Lorem ipsum psdea itgum rixt.</p>
 					</div>
@@ -49,7 +49,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("Create Category", "Create", "Categories")</h3>
 						<p>Lorem ipsum psdea itgum rixt.</p>
 					</div>
@@ -57,7 +57,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("Create Budget", "Create", "Budgets")</h3>
 						<p>Lorem ipsum psdea itgum rixt.</p>
 					</div>
@@ -65,7 +65,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("Create Budget Item", "Create", "BudgetItems")</h3>
 						<p>Lorem ipsum psdea itgum rixt.</p>
 					</div>
@@ -73,7 +73,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("My Household", "MyHousehold", "Households")</h3>
 						<p>Lorem ipsum psdea itgum rixt.</p>
 					</div>
@@ -81,7 +81,7 @@
 				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="tile-stats">
 						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-							<div class="count">179</div>*@
+				<div class="count">179</div>*@
 						<h3>@Html.ActionLink("Accounts in My Household", "HouseAccounts", "PersonalAccounts")</h3>
 						<p>Lorem ipsum psdea itgum rixt.</p>
 					</div>
@@ -93,16 +93,16 @@
 						<h3>@Html.ActionLink("Index Transactions", "Index", "Transactions") add view for my transactions (logged in user)</h3>
 						@foreach (var item in Model.PersonalAccounts)
 
-						{
-							if (item.IsDeleted == false)
-							{
-								<li>
-									@Html.DisplayFor(modelItem => item.Name) @*add link to account transactions*@
-									@Html.DisplayFor(modelItem => item.Balance)@*add link to account transactions*@
+			{
+				if (item.IsDeleted == false)
+				{
+					<li>
+						@Html.DisplayFor(modelItem => item.Name) @*add link to account transactions*@
+						@Html.DisplayFor(modelItem => item.Balance)@*add link to account transactions*@
 
-								</li>
-							}
-						}
+					</li>
+	}
+}
 
 
 					</div>
@@ -114,17 +114,17 @@
 
 						@foreach (var item in Model.Transactions.Take(10))
 
-						{
-							if (item.IsDeleted == false)
-							{
-								<li>
-									@Html.DisplayFor(modelItem => item.Date)
-									@Html.DisplayFor(modelItem => item.Account.Name)
-									@Html.DisplayFor(modelItem => item.Amount)
-									@Html.DisplayFor(modelItem => item.Description)
-								</li>
-							}
-						}
+			{
+				if (item.IsDeleted == false)
+				{
+					<li>
+						@Html.DisplayFor(modelItem => item.Date)
+						@Html.DisplayFor(modelItem => item.Account.Name)
+						@Html.DisplayFor(modelItem => item.Amount)
+						@Html.DisplayFor(modelItem => item.Description)
+					</li>
+	}
+}
 					</div>
 				</div>
 
@@ -134,290 +134,84 @@
 						<h3>@Html.ActionLink("Household Transactions", "Index", "Transactions") @*modeify this link add view for house transactions*@</h3>
 						@foreach (var item in Model.HouseAccounts)
 
-						{
-							if (item.IsDeleted == false)
-							{
-								<li>
-									@Html.DisplayFor(modelItem => item.Name)
-									@Html.DisplayFor(modelItem => item.Balance)
-								</li>
-							}
-						}
+			{
+				if (item.IsDeleted == false)
+				{
+					<li>
+						@Html.DisplayFor(modelItem => item.Name)
+						@Html.DisplayFor(modelItem => item.Balance)
+					</li>
+	}
+}
 
 
 
 					</div>
 				</div>
-
+				@Html.ActionLink("Chart", "Dash2", "Home")
 			</div>
 
 
 
 
+			<div class="row">
 
+				<div class="col-md-4">
+					<h3>Show some Household data</h3>
+					<input type="text" id="houseNum" />
+					<button class="btn btn-default" id="id">Click Me</button>
+					<p id="houses"></p>
+				</div>
 
-			@*Morris HTML
-			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+				<div class="col-md-4">
+					<h3>Show some Account data</h3>
+					<input type="text" id="houseNum2" />
+					<button class="btn btn-default" id="hhId">Click Me</button>
 
-			<div class="ajaxchart btn btn-sm btn-success" id="arrychart">Current</div>
-			<div class="ajaxchart btn btn-sm btn-success" id="objectchart">Last</div>
-			<div class="jumbotron">
+					<p id="accounts"></p>
+				</div>
+
 				<div class="row">
-					<div class="col-md-12">
-						<div id="chart"></div>
+					<div id="MyChart" style="height: 250px;" class="col-md-6">
+
 					</div>
+					<div class="col-md-6"></div>
 				</div>
-			</div>
-			Morris Scripts
-			<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-			<script>
- $(document).ready(function () {
- $(".ajaxchart").click(function () {
- var url = '@Url.Action("GetChartDataAjax", "Home")' + '?type=' + $(this).html();
- $.post(url).then(function (response) {
- $('#chart').empty();
- new Morris.Bar({
- element: 'chart',
- data: response,
- xkey: 'x',
- ykeys: ['y'],
- labels: ['Amount']
- });
- })
- })
- })
-			</script>*@
 
-			Fusion HTML
-			<div class="row">
-				<div class="col-md-12">
-					<div id="p-chart-container"></div>
+				<div id="chartContainer">FusionCharts example here!</div>
+
+				<div id="financeapiContainr">My Finance data displayed in a fusion chart!</div>
+
+				<p>If this works I should see data below...</p>
+				<div>
+					<ul id="rawapidata"></ul>
 				</div>
+
+				<div id="myRealTimeApiData">My data displayed in a fusion chart!</div>
+
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div id="acct-chart-container"></div>
-				</div>
-			</div>
-			Fusion Scripts
-			<script src="~/Scripts/fusioncharts.js"></script>
-			<script src="~/Scripts/fusioncharts.charts.js"></script>
-			<script src="~/Scripts/fusioncharts.widgets.js"></script>
-			<script src="~/Scripts/fusionchart.powercharts.js"></script>
-			<script>
- $(document).ready(function () {
- var url = '@Url.Action("FusionDataAjax", "Home")';
- $.post(url).then(function (response) {
- console.log(response)
- data = response;
- FusionCharts.ready(function (data) {
- var d = new Date();
-var months = ["January", "February", "March", "April", "May", "June",
- "July", "August", "September", "October", "November", "December"];
- var monthName = months[d.getMonth()];
-var year = d.getFullYear();
-var revenueChart = new FusionCharts({
- type: 'column3d',
- renderAt: 'p-chart-container',
- width: '1020',
- height: '500',
- dataFormat: 'json',
- dataSource: {
-			 "chart": {
-				 "caption": "Budget Chart",
-				 "subCaption": "/Transactions/",
-				 "xAxisName": monthName + ' ' + year,
-				 "yAxisName": "Values (In USD)",
-				 "paletteColors": "#0075c2",
-				 "valueFontColor": "#ffffff",
-				 "baseFont": "Helvetica Neue,Arial",
-				 "captionFontSize": "14",
-				 "subcaptionFontSize": "14",
-				 "subcaptionFontBold": "0",
-				 "placeValuesInside": "1",
-				 "rotateValues": "1",
-				 "showShadow": "0",
-				 "divlineColor": "#999999",
-				 "divLineIsDashed": "1",
-				 "divlineThickness": "1",
-				 "divLineDashLen": "1",
-				 "divLineGapLen": "1",
-				 "canvasBgColor": "#ffffff"
-			 },
-			 "data": response
-		 }
-	 });
-	 revenueChart.render();
-	 });
- })
- })
-			</script>
+
+			@section scripts{
+				<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+				<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+				<!-- Fusion charts-->
+				<script src="~/Assets/FusionCharts/js/fusioncharts.js"></script>
+				<script  src="~/Assets/FusionCharts/js/fusioncharts.charts.js"></script>
+				<script src="~/Assets/FusionCharts/js/fusioncharts.widgets.js"></script>
+				<script src="~/Assets/FusionCharts/js/fusioncharts.powercharts.js"></script>
+				<script src="~/Assets/FusionCharts/js/themes/fusioncharts.theme.fint.js"></script>
 
 
-			<script>
- $(document).ready(function () {
- var url = '@Url.Action("AccountDataAjax", "Home")';
- $.post(url).then(function (response) {
- console.log(response)
- data = response;
- FusionCharts.ready(function (data) {
- var d = new Date();
-var months = ["January", "February", "March", "April", "May", "June",
- "July", "August", "September", "October", "November", "December"];
- var monthName = months[d.getMonth()];
-var year = d.getFullYear();
-var revenueChart = new FusionCharts({
- type: 'column3d',
- renderAt: 'acct-chart-container',
- width: '1020',
- height: '500',
- dataFormat: 'json',
- dataSource: {
- "chart": {
-"caption": "NYC_Budget Chart",
-"subCaption": "/Account/",
-"xAxisName": monthName + ' ' + year,
-"yAxisName": "Values (In USD)",
-"paletteColors": "#0075c2",
-"valueFontColor": "#ffffff",
-"baseFont": "Helvetica Neue,Arial",
-"captionFontSize": "14",
-"subcaptionFontSize": "14",
-"subcaptionFontBold": "0",
-"placeValuesInside": "1",
-"rotateValues": "1",
-"showShadow": "0",
-"divlineColor": "#999999",
-"divLineIsDashed": "1",
-"divlineThickness": "1",
-"divLineDashLen": "1",
-"divLineGapLen": "1",
-"canvasBgColor": "#ffffff"
- },
- "data": response
- }
- });
- revenueChart.render();
- });
- })
- })
-			</script>
+				<script>
 
+        //var uri = '../Api/FinancialPortal/Households/json?id=';
+        //var uri2 = '../Api/FinancialPortal/Accounts/json?householdId=';
 
-
-
-			<div class="row">
-				<div class="col-md-12">
-					<div class="x_panel">
-						<div class="x_title">
-							<h2>My Budget <small>Monthly</small></h2>
-							<div class="filter">
-								<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-									<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-									<span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-								</div>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-
-
-
-
-
-
-
-
-						<!-- bar charts group -->
-						<div class="col-md-6 col-sm-6 col-xs-12">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>Bar Chart Group <small>Sessions</small></h2>
-									<ul class="nav navbar-right panel_toolbox">
-										<li>
-											<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-										</li>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-											<ul class="dropdown-menu" role="menu">
-												<li>
-													<a href="#">Settings 1</a>
-												</li>
-												<li>
-													<a href="#">Settings 2</a>
-												</li>
-											</ul>
-										</li>
-										<li>
-											<a class="close-link"><i class="fa fa-close"></i></a>
-										</li>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content1">
-									<div id="graph_bar_group" style="width:100%; height:280px;"></div>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-						<!-- /bar charts group -->
-
-
-
-
-						<div class="row">
-							<div class="col-md-4">
-								<h3>Show some Household data</h3>
-								<input type="text" id="houseNum" />
-								<input type="button" value="Search" onclick="find();" />
-								<p id="houses"></p>
-							</div>
-
-							<div class="col-md-4">
-								<h3>Show some Account data</h3>
-								<input type="text" id="houseNum2" />
-								<input type="button" value="Search" onclick="findAccounts();" />
-								@*<ul id="accounts"></ul>*@
-								<p id="accounts"></p>
-							</div>
-
-							<div class="row">
-								<div id="MyChart" style="height: 250px;" class="col-md-6">
-
-								</div>
-								<div class="col-md-6"></div>
-							</div>
-
-							<div id="chartContainer">FusionCharts example here!</div>
-
-							<div id="financeapiContainr">My Finance data displayed in a fusion chart!</div>
-
-							<p>If this works I should see data below...</p>
-							<div>
-								<ul id="rawapidata"></ul>
-							</div>
-
-							<div id="myRealTimeApiData">My data displayed in a fusion chart!</div>
-
-						</div>
-
-						@section scripts{
-							<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-
-							<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-							<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
-							<!-- Fusion charts-->
-							<script src="~/Scripts/js/fusioncharts.js"></script>
-							<script src="~/Scripts/js/fusioncharts.charts.js"></script>
-							<script src="~/Scripts/js/fusioncharts.widgets.js"></script>
-							<script src="~/Scripts/js/fusioncharts.powercharts.js"></script>
-							<script src="~/Scripts/js/themes/fusioncharts.theme.fint.js"></script>
-
-							<script>
-
-        @*var uri = '../Api/FinancialPortal/Households/json?id=';
-        var uri2 = '../Api/FinancialPortal/Accounts/json?householdId=';
+					@*var uri = '../api/Finance/GetHousehold?Id=';
+					var uri2 = '../api/Finance/GetAccounts?hhId=';
 
         function find() {
             var id = $('#houseNum').val();
@@ -432,8 +226,8 @@ var revenueChart = new FusionCharts({
         }
 
         function findAccounts() {
-            var id = $('#houseNum2').val();
-            $.getJSON(uri2 + id)
+			var hhId = $('#houseNum2').val();
+			$.getJSON(uri2 + hhId)
                 .done(function (data) {
                     $.each(data, function (key, item) {
                         //// Add a list item for the product.
@@ -463,144 +257,33 @@ var revenueChart = new FusionCharts({
                     });
                 })
             })
-        }*@
 
-        FusionCharts.ready(function() {
-            var revenueChart = new FusionCharts({
-                "type": "column2d",
-                "renderAt": "chartContainer",
-                "width": "500",
-                "height": "300",
-                "dataFormat": "json",
-                "dataSource": {
-                    "chart": {
-                        "caption": "Monthly revenue for last year",
-                        "subCaption": "Harry's SuperMart",
-                        "xAxisName": "Month",
-                        "yAxisName": "Revenues (In USD)",
-                        "theme": "fint"
-                    },
-                    "data": [
-                        {
-                            "label": "Jan",
-                            "value": "420000"
-                        },
-                        {
-                            "label": "Feb",
-                            "value": "810000"
-                        },
-                        {
-                            "label": "Mar",
-                            "value": "720000"
-                        },
-                        {
-                            "label": "Apr",
-                            "value": "550000"
-                        },
-                        {
-                            "label": "May",
-                            "value": "910000"
-                        },
-                        {
-                            "label": "Jun",
-                            "value": "510000"
-                        },
-                        {
-                            "label": "Jul",
-                            "value": "680000"
-                        },
-                        {
-                            "label": "Aug",
-                            "value": "620000"
-                        },
-                        {
-                            "label": "Sep",
-                            "value": "610000"
-                        },
-                        {
-                            "label": "Oct",
-                            "value": "490000"
-                        },
-                        {
-                            "label": "Nov",
-                            "value": "-100000"
-                        },
-                        {
-                            "label": "Dec",
-                            "value": "730000"
-                        }
-                    ]
-                }
-            });
-
-            revenueChart.render();
-        });
-
-        FusionCharts.ready(function () {
-            var revenueChart = new FusionCharts({
-                "type": "column2d",
-                "renderAt": "financeapiContainr",
-                "width": "500",
-                "height": "300",
-                "dataFormat": "json",
-                "dataSource": {
-                    "chart": {
-                        "caption": "Household Accounts",
-                        "subCaption": "Name & Balance",
-                        "xAxisName": "Month",
-                        "yAxisName": " Balances (In USD)",
-                        "theme": "fint"
-                    },
-                    "data": [
-                        {
-                            "label": "My New Acct",
-                            "value": "10000.00"
-                        },
-                        {
-                            "label": "Car Account",
-                            "value": "-5000.00"
-                        },
-                        {
-                            "label": "Rainy Day",
-                            "value": "420.00"
-                        },
-                        {
-                            "label": "API Account",
-                            "value": "1200.00"
-                        },
-                        {
-                            "label": "Test Account",
-                            "value": "5000.00"
-                        }
-                    ]
-                }
-            });
-
-            revenueChart.render();
-        });
+		}*@
 
 
-        $(document).ready(function () {
+@*@private  ApplicationDbContext db = new ApplicationDbContext();*@
 
-			var uri = '../api/Finance/GetAccounts?hhId=4';
+   //     $(document).ready(function () {
 
-			//http://ckhousefinanceapi.azurewebsites.net/api/Finance/GetAccounts?hhId=4
+			//var uri = 'http://ckhousefinanceapi.azurewebsites.net/api/Finance/GetAccountsByHouseForCharts?hhId=';
+			//var houseId = db.Households.Find(User.Identity.GetHouseholdId()); //need a different reference, can't call database information
+   //         // Send an AJAX request
+   //         $.getJSON(uri + houseId).done(function (data) {
+   //             // On success, 'data' contains a list of products.
+   //             $.each(data, function (key, item) {
+   //                 // Add a list item for the product.
+   //                 $('<li>', { text: formatItem(item) }).appendTo($('#rawapidata')); //this is for a text list!!! not a chart
+   //             });
+   //         });
+   //     });
+
+   //     function formatItem(item) { return item.Label + ': $' + item.Value; }
+
+		$(document).ready(function () {
+			var endpoint = 'http://ckhousefinanceapi.azurewebsites.net/api/Finance/GetAccountsByHouseForCharts?hhId=4';
+			var myId = "4";
             // Send an AJAX request
-            $.getJSON(uri).done(function (data) {
-                // On success, 'data' contains a list of products.
-                $.each(data, function (key, item) {
-                    // Add a list item for the product.
-                    $('<li>', { text: formatItem(item) }).appendTo($('#rawapidata'));
-                });
-            });
-        });
-
-        function formatItem(item) { return item.Label + ': $' + item.Value; }
-
-        $(document).ready(function () {
-            var endpoint = '../Api/FinancialPortal/AccountChartData?householdId=2';
-            // Send an AJAX request
-            $.getJSON(endpoint).done(function (data) {
+            $.getJSON(endpoint/* + myId*/).done(function (data) {
                 // On success, 'data' contains a list of products.
                 //FusionCharts.ready(function () {
                     var revenueChart = new FusionCharts({
@@ -622,87 +305,24 @@ var revenueChart = new FusionCharts({
                     });
 
                     revenueChart.render();
-                //});
+                
             });
         });
 
 
-							</script>
-						}
+				</script>
+			}
 
 
-					</div>
-				</div>
-			</div>
-
-			
-			</div>
 		</div>
 	</div>
+	</div>
+
+
+	</div>
+	</div>
+	</div>
 	<!-- /page content -->
-
-
-
-	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-	<script>
- $(document).ready(function () {
- $.get('@Url.Action("GetChart", "Home")').then(function (response) {
- $('#exp').text('$' + response.totalExpense);
- $('#bud').text('$' + response.totalBudget);
- $('#acc').text('$' + response.totalAcc);
- new Morris.Bar({
- // ID of the element in which to draw the chart.
-	 element: 'graph_bar_group',
- // Chart data records -- each entry in this array corresponds to
- a point on the chart.
- data: response.bar,
-
-			 // The name of the data record attribute that contains x-values.
-			 xkey: 'Name',
-			 // A list of names of data record attributes that contain y
-			 values.
-				 ykeys: ['Actual', 'Budgeted'],
-			 // Labels for the ykeys -- will be displayed when you hover over
-			 the chart.
-				 labels: ['Expenses to Date', 'Amount Budgeted'],
-			 resize: true
-		 });
-		 new Morris.Donut({
-			 element: 'chart2',
-			 data: response.donut,
-			 //label: 'Name',
-			 //value: 'Value',
-			 resize: true
-		 });
-	 });
-
-	 $.post('@Url.Action("GetMonthly","Home")').then(function (response) {
- console.log(response);
- new Morris.Bar({
- // ID of the element in which to draw the chart.
-element: 'MonthlyChart',
-// Chart data records -- each entry in this array corresponds to
- a point on the chart.
- data: response,
-// The name of the data record attribute that contains x-values.
-xkey: 'month',
-// A list of names of data record attributes that contain y
-values.
- ykeys: ['income', 'expense', 'budget'],
- // Labels for the ykeys -- will be displayed when you hover over
- the chart.
- labels: ['Income to Date', 'Expenses to Date', 'Amount Budgeted'],
- resize: true
- });
- });
- });
-	</script>
-
-
-
-
-
 
 
 </body>
