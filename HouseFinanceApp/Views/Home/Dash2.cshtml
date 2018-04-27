@@ -1,4 +1,4 @@
-﻿
+﻿@using HouseFinanceApp.Models
 @{
 	ViewBag.Title = "Dash2";
 }
@@ -24,7 +24,7 @@
 
 		$(document).ready(function () {
 			var endpoint = 'http://ckhousefinanceapi.azurewebsites.net/api/Finance/GetAccountsByHouseForCharts?hhId=';
-			var myId = "4";
+			var myId = @User.Identity.GetHouseholdId().ToString();
 			// Send an AJAX request
 			$.getJSON(endpoint + myId).done(function (data) {
 				// On success, 'data' contains a list of products.
@@ -52,8 +52,50 @@
 			});
 		});
 
-		
 
+
+		@*$(document).ready(function () {
+			var endpoint = 'http://newfinancialapi.azurewebsites.net/api/Finance/Accounts?householdId=';
+			var myId = "15";
+			// Send an AJAX request
+			$.getJSON(endpoint + myId).done(function (data) {
+
+				@{
+					<text>
+				var c
+
+				</text>
+
+
+}
+
+				// On success, 'data' contains a list of products.
+				//FusionCharts.ready(function () {
+				var revenueChart = new FusionCharts({
+					"type": "column3d",
+					"renderAt": "myRealTimeApiData",
+					"width": "500",
+					"height": "300",
+					"dataFormat": "json",
+					"dataSource": {
+							"chart": {
+								"caption": "Real Time Household data",
+							"subCaption": "Account(s) Summary",
+							"xAxisName": "Name",
+							"yAxisName": " Balances (In USD)",
+							"theme": "fint"
+							},
+						"data": data.Select(d => new {
+							Label = d.Name,
+							Value = d.Balance
+						})
+					}
+					});
+
+				revenueChart.render();
+
+			});
+		});*@
 
 	</script>
-	}
+}

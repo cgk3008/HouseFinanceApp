@@ -15,6 +15,10 @@ namespace HouseFinanceApp.Controllers
         // GET: HouseholdsViewsModel
         public ActionResult Index()
         {
+
+
+
+
             return View();
         }
 

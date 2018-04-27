@@ -1,4 +1,4 @@
-﻿@model HouseFinanceApp.Models.HouseholdViewModel
+﻿@model IEnumerable<HouseFinanceApp.Models.HouseholdViewModel>
 
 @{
 	ViewBag.Title = "MyHousehold";
@@ -28,7 +28,34 @@
 
 							</p>
 
+							<table id="mytable" class="dataTables">
+								<thead>
+									<tr>
+										<th>
+											Members
+										</th>
+										<th>Email</th>
+									</tr>
+								</thead>
+								<tbody>
 
+									@foreach (var item in Model)
+									{
+										<tr>
+											<td>
+												@item.Members
+											</td>
+											<td>
+												@item.
+											</td>
+										</tr>
+									}
+
+								</tbody>
+							</table>
+							<script>
+								$('#mytable').DataTable();
+							</script>
 
 
 
@@ -52,7 +79,7 @@
 
 									<div class="form-group">
 										@Html.LabelFor(model => model.EmailForInvitedResident, null, "Email for invitee")
-									
+
 										<div class="col-md-10">
 											@Html.EditorFor(model => model.EmailForInvitedResident, new { htmlAttributes = new { @class = "form-control" } })
 											@Html.ValidationMessageFor(model => model.EmailForInvitedResident, "", new { @class = "text-danger" })

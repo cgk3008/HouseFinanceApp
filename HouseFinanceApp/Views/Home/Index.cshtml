@@ -1,5 +1,5 @@
 ﻿@model HouseFinanceApp.Models.DashViewModel
-
+@using HouseFinanceApp.Models
 @{
 	ViewBag.Title = "Index";
 }
@@ -148,45 +148,14 @@
 
 					</div>
 				</div>
-				@Html.ActionLink("Chart", "Dash2", "Home")
+			
 			</div>
 
 
 
 
-			<div class="row">
-
-				<div class="col-md-4">
-					<h3>Show some Household data</h3>
-					<input type="text" id="houseNum" />
-					<button class="btn btn-default" id="id">Click Me</button>
-					<p id="houses"></p>
-				</div>
-
-				<div class="col-md-4">
-					<h3>Show some Account data</h3>
-					<input type="text" id="houseNum2" />
-					<button class="btn btn-default" id="hhId">Click Me</button>
-
-					<p id="accounts"></p>
-				</div>
-
-				<div class="row">
-					<div id="MyChart" style="height: 250px;" class="col-md-6">
-
-					</div>
-					<div class="col-md-6"></div>
-				</div>
-
-				<div id="chartContainer">FusionCharts example here!</div>
-
-				<div id="financeapiContainr">My Finance data displayed in a fusion chart!</div>
-
-				<p>If this works I should see data below...</p>
-				<div>
-					<ul id="rawapidata"></ul>
-				</div>
-
+			<div class="row">			
+				Modify to automatically load hhId for user ID into the fusionchart 
 				<div id="myRealTimeApiData">My data displayed in a fusion chart!</div>
 
 			</div>
@@ -281,9 +250,9 @@
 
 		$(document).ready(function () {
 			var endpoint = 'http://ckhousefinanceapi.azurewebsites.net/api/Finance/GetAccountsByHouseForCharts?hhId=4';
-			var myId = "4";
+			var myId = @User.Identity.GetHouseholdId().ToString();
             // Send an AJAX request
-            $.getJSON(endpoint/* + myId*/).done(function (data) {
+            $.getJSON(endpoint + myId).done(function (data) {
                 // On success, 'data' contains a list of products.
                 //FusionCharts.ready(function () {
                     var revenueChart = new FusionCharts({
