@@ -118,6 +118,8 @@ namespace HouseFinanceApp.Models
         public int Id { get; set; }
         public int AccountId { get; set; }
         public string Description { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = false)]
         public DateTimeOffset Date { get; set; }
         public decimal Amount { get; set; }
         [Display(Name = "Credit")]
@@ -129,6 +131,8 @@ namespace HouseFinanceApp.Models
         public bool Reconciled { get; set; }
         public decimal ReconciledAmount { get; set; }
         public bool IsDeleted { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = false)]
         public DateTimeOffset Created { get; set; }
 
         public virtual PersonalAccount Account { get; set; }

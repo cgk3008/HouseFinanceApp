@@ -26,24 +26,62 @@ namespace HouseFinanceApp.Controllers
         // GET: MyHousehold
         public ActionResult MyHousehold()
         {
-            var user = db.Users.Find(User.Identity.GetUserId());
-            var hh = db.Households.Where(h => h.Id == user.HouseholdId);
-            var houseName = db.Households.Where(hn => hn.Name == user.Household.Name);
+            //var user = db.Users.Find(User.Identity.GetUserId());
+            //var hh = db.Households.Where(h => h.Id == user.HouseholdId);
+            //var houseName = db.Households.Where(hn => hn.Name == user.Household.Name);
 
-            HouseholdViewModel model = new HouseholdViewModel()
+            //HouseholdViewModel model = new HouseholdViewModel()
+            //{
+            //    //HHName = houseName,
+
+            //};
+            ////      public ApplicationUser Member { get; set; }
+
+            ////public bool IsJoinHouse { get; set; }
+            ////public int? HHId { get; set; }
+            ////public string HHName { get; set; }
+            ////public string EmailForInvitedResident { get; set; }
+
+
+            //return View(model);
+
+
+            var id = User.Identity.GetHouseholdId();
+
+            //Household householdId = db.Households.Find(id);
+
+
+            if (id == null)
             {
-                //HHName = houseName,
+                return HttpNotFound();
+            }
+            //return View(household);
 
+            var userId = User.Identity.GetUserId();
+            
+            //var acctIdByHouseId = db.Users.Find(id)/*.Accounts.ToList()*/;
+
+            var houseAccounts = db.PersonalAccounts.Where(p => p.CreatedById == userId || p.HouseholdId == id).ToList();
+            //var houseTransactions = db.Transactions.Where(t => t.AccountId == acctIdByHouseId).ToList();
+            var userPersonalAccounts = db.PersonalAccounts.Where(p => p.CreatedById == userId).ToList();
+            var userTransactions = db.Transactions.Where(t => t.EnteredById == userId).ToList();
+            var householdName = db.Households.Where(n => n.Id == id).Select(t => t.Name);
+
+
+            DashViewModel model = new DashViewModel()
+            {
+                PersonalAccounts = userPersonalAccounts,
+                Transactions = userTransactions,
+                HouseAccounts = houseAccounts,
+                //HouseTransactions = acctIdByHouseId,
+                //Households = householdName,
             };
-            //      public ApplicationUser Member { get; set; }
-
-            //public bool IsJoinHouse { get; set; }
-            //public int? HHId { get; set; }
-            //public string HHName { get; set; }
-            //public string EmailForInvitedResident { get; set; }
 
 
             return View(model);
+
+
+
         }
 
 
@@ -253,7 +291,7 @@ namespace HouseFinanceApp.Controllers
             {
                 db.Entry(household).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(household);
         }
@@ -281,7 +319,7 @@ namespace HouseFinanceApp.Controllers
             Household household = db.Households.Find(id);
             db.Households.Remove(household);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

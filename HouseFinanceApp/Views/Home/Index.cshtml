@@ -1,180 +1,239 @@
 ﻿@model HouseFinanceApp.Models.DashViewModel
 @using HouseFinanceApp.Models
 @{
-	ViewBag.Title = "Index";
+    ViewBag.Title = "Index";
 }
 
 <html>
 <body>
-	<div class="right_col" role="main">
-		<div class="">
-			<div class="row top_tiles">
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						@*<div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-				<div class="count">179</div>*@
-						<h3>  @Html.ActionLink("Create New Account", "Create", "PersonalAccounts")</h3>
-						<br /><br />
-						<h3>  @Html.ActionLink("Index of Accounts", "Index", "PersonalAccounts")</h3>
-						<p>Lorem ipsum psdea itgum rixt.</p>
-					</div>
-				</div>
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						@*<div class="icon"><i class="fa fa-comments-o"></i></div>
-				<div class="count">179</div>*@
-						<h3>@Html.ActionLink("Create New Household", "CreateHousehold", "Households")</h3>
-						<br /><br />
-						<h3>@Html.ActionLink("Household Index", "Index", "Households")</h3>
-						<p></p>
-						<h3>@Html.ActionLink("Household Invite", "Invite", "Invites")</h3>
-					</div>
-				</div>
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-				<div class="count">179</div>*@
-						<h3>@Html.ActionLink("User/Household Role Manager", "Index", "HouseholdRolesViews")</h3>
-						<p>Lorem ipsum psdea itgum rixt.</p>
-					</div>
-				</div>
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-				<div class="count">179</div>*@
-						<h3>@Html.ActionLink("Create Transaction", "Create", "Transactions")</h3>
-						<p>Lorem ipsum psdea itgum rixt.</p>
-					</div>
-				</div>
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-				<div class="count">179</div>*@
-						<h3>@Html.ActionLink("Create Category", "Create", "Categories")</h3>
-						<p>Lorem ipsum psdea itgum rixt.</p>
-					</div>
-				</div>
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-				<div class="count">179</div>*@
-						<h3>@Html.ActionLink("Create Budget", "Create", "Budgets")</h3>
-						<p>Lorem ipsum psdea itgum rixt.</p>
-					</div>
-				</div>
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-				<div class="count">179</div>*@
-						<h3>@Html.ActionLink("Create Budget Item", "Create", "BudgetItems")</h3>
-						<p>Lorem ipsum psdea itgum rixt.</p>
-					</div>
-				</div>
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-				<div class="count">179</div>*@
-						<h3>@Html.ActionLink("My Household", "MyHousehold", "Households")</h3>
-						<p>Lorem ipsum psdea itgum rixt.</p>
-					</div>
-				</div>
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						@*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-				<div class="count">179</div>*@
-						<h3>@Html.ActionLink("Accounts in My Household", "HouseAccounts", "PersonalAccounts")</h3>
-						<p>Lorem ipsum psdea itgum rixt.</p>
-					</div>
-				</div>
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="row top_tiles">
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        @*<div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
+                            <div class="count">179</div>*@
+                        <h3>  @Html.ActionLink("Create New Account", "Create", "PersonalAccounts")</h3>
+                        <br /><br />
+                        <h3>  @Html.ActionLink("Index of Accounts", "Index", "PersonalAccounts")</h3>
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        @*<div class="icon"><i class="fa fa-comments-o"></i></div>
+                            <div class="count">179</div>*@
+                        <h3>@Html.ActionLink("Create New Household", "CreateHousehold", "Households")</h3>
+                        <br /><br />
+                        <h3>@Html.ActionLink("Household Index", "Index", "Households")</h3>
+                        <p></p>
+                        <h3>@Html.ActionLink("Household Invite", "Invite", "Invites")</h3>
+                    </div>
+                </div>
+                @*<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                            @*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                    <div class="count">179</div>
+                            <h3>@Html.ActionLink("User/Household Role Manager", "Index", "HouseholdRolesViews")</h3>
+                            <p>Lorem ipsum psdea itgum rixt.</p>
+                        </div>
+                    </div>*@
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        @*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                            <div class="count">179</div>*@
+                        <h3>@Html.ActionLink("Create Transaction", "Create", "Transactions")</h3>
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        @*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                            <div class="count">179</div>*@
+                        <h3>@Html.ActionLink("Create Category", "Create", "Categories")</h3>
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        @*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                            <div class="count">179</div>*@
+                        <h3>@Html.ActionLink("Create Budget", "Create", "Budgets")</h3>
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        @*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                            <div class="count">179</div>*@
+                        <h3>@Html.ActionLink("Create Budget Item", "Create", "BudgetItems")</h3>
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        @*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                            <div class="count">179</div>*@
+                        <h3>@Html.ActionLink("My Household", "MyHousehold", "Households"@*, new { id = item.Household.Id }*@)</h3>
 
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						<h3>Personal Accounts/Balances</h3>
-						<h3>@Html.ActionLink("Index Transactions", "Index", "Transactions") add view for my transactions (logged in user)</h3>
-						@foreach (var item in Model.PersonalAccounts)
-
-			{
-				if (item.IsDeleted == false)
-				{
-					<li>
-						@Html.DisplayFor(modelItem => item.Name) @*add link to account transactions*@
-						@Html.DisplayFor(modelItem => item.Balance)@*add link to account transactions*@
-
-					</li>
-	}
-}
+                        <p>Lorem ipsum psdea itgum rixt.</p>
+                    </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        @*<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                            <div class="count">179</div>*@
+                        <h3>@Html.ActionLink("Accounts in My Household", "HouseAccounts", "PersonalAccounts")</h3>
+                        <p></p>
+                    </div>
+                </div>
 
 
-					</div>
-				</div>
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						<h3>Recent Transactions</h3>
+                <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="count">
+                            Recent <br />Transactions
+                        </div>
+
+                        <ol>
+                            @foreach (var item in Model.Transactions.Take(5))
+
+                            {
+                                if (item.IsDeleted == false)
+                                {
+
+                                    <li>
+                                        @Html.DisplayFor(modelItem => item.Date, "{0:dd/MMM/yyyy}"),
+                                        @Html.DisplayFor(modelItem => item.Account.Name)
+                                        <br />
+                                        $ @Html.DisplayFor(modelItem => item.Amount)
+                                        <br />
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                        <br />
+                                    </li>
+
+                                }
+                            }
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="page-title">
+                            <h3>Personal Accounts/Balances</h3>
+                        </div>
+
+                        <ol>
+                            @foreach (var item in Model.HouseAccounts)
+
+                            {
+                                if (item.IsDeleted == false)
+                                {
+                                    <li>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                        <br />
+                                        $ @Html.DisplayFor(modelItem => item.Balance)
+                                    </li>
+                                }
+                            }
+
+                        </ol>
 
 
-						@foreach (var item in Model.Transactions.Take(10))
+                        @Html.ActionLink("Go To Household Transactions", "Index", "Transactions", new { @class = "btn btn-primary", type = "button" })
+                    </div>
+                </div>
 
-			{
-				if (item.IsDeleted == false)
-				{
-					<li>
-						@Html.DisplayFor(modelItem => item.Date)
-						@Html.DisplayFor(modelItem => item.Account.Name)
-						@Html.DisplayFor(modelItem => item.Amount)
-						@Html.DisplayFor(modelItem => item.Description)
-					</li>
-	}
-}
-					</div>
-				</div>
-
-				<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-						<h3>Personal Accounts/Balances</h3>
-						<h3>@Html.ActionLink("Household Transactions", "Index", "Transactions") @*modeify this link add view for house transactions*@</h3>
-						@foreach (var item in Model.HouseAccounts)
-
-			{
-				if (item.IsDeleted == false)
-				{
-					<li>
-						@Html.DisplayFor(modelItem => item.Name)
-						@Html.DisplayFor(modelItem => item.Balance)
-					</li>
-	}
-}
+            </div>
 
 
+            <div class="">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2><i class="fa fa-bars"></i> Tabs <small>Float left</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="#">Settings 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Settings 2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
 
-					</div>
-				</div>
-			
-			</div>
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Home</a>
+                                    </li>
+                                    <li role="presentation" class="">
+                                        <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Profile</a>
+                                    </li>
+                                    <li role="presentation" class="">
+                                        <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Profile</a>
+                                    </li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                        <p>
+                                            Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
+                                            synth. Cosby sweater eu banh mi, qui irure terr.
+                                        </p>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                        <p>
+                                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
+                                            booth letterpress, commodo enim craft beer mlkshk aliquip
+                                        </p>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                                        <p>
+                                            xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
+                                            booth letterpress, commodo enim craft beer mlkshk
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div id="myRealTimeApiData">My data displayed in a fusion chart!</div>
+
+                </div>
+
+                @section scripts{
+                    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+                    <!-- Fusion charts-->
+                    <script src="~/Assets/FusionCharts/js/fusioncharts.js"></script>
+                    <script src="~/Assets/FusionCharts/js/fusioncharts.charts.js"></script>
+                    <script src="~/Assets/FusionCharts/js/fusioncharts.widgets.js"></script>
+                    <script src="~/Assets/FusionCharts/js/fusioncharts.powercharts.js"></script>
+                    <script src="~/Assets/FusionCharts/js/themes/fusioncharts.theme.fint.js"></script>
 
 
-
-
-			<div class="row">			
-				Modify to automatically load hhId for user ID into the fusionchart 
-				<div id="myRealTimeApiData">My data displayed in a fusion chart!</div>
-
-			</div>
-
-			@section scripts{
-				<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-
-				<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-				<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
-				<!-- Fusion charts-->
-				<script src="~/Assets/FusionCharts/js/fusioncharts.js"></script>
-				<script  src="~/Assets/FusionCharts/js/fusioncharts.charts.js"></script>
-				<script src="~/Assets/FusionCharts/js/fusioncharts.widgets.js"></script>
-				<script src="~/Assets/FusionCharts/js/fusioncharts.powercharts.js"></script>
-				<script src="~/Assets/FusionCharts/js/themes/fusioncharts.theme.fint.js"></script>
-
-
-				<script>
+                    <script>
 
         //var uri = '../Api/FinancialPortal/Households/json?id=';
         //var uri2 = '../Api/FinancialPortal/Accounts/json?householdId=';
@@ -249,7 +308,7 @@
    //     function formatItem(item) { return item.Label + ': $' + item.Value; }
 
 		$(document).ready(function () {
-			var endpoint = 'http://ckhousefinanceapi.azurewebsites.net/api/Finance/GetAccountsByHouseForCharts?hhId=4';
+			var endpoint = 'http://ckhousefinanceapi.azurewebsites.net/api/Finance/GetAccountsByHouseForCharts?hhId=';
 			var myId = @User.Identity.GetHouseholdId().ToString();
             // Send an AJAX request
             $.getJSON(endpoint + myId).done(function (data) {
@@ -274,24 +333,24 @@
                     });
 
                     revenueChart.render();
-                
+
             });
         });
 
 
-				</script>
-			}
+                    </script>
+                }
 
 
-		</div>
-	</div>
-	</div>
+            </div>
+        </div>
+    </div>
 
 
-	</div>
-	</div>
-	</div>
-	<!-- /page content -->
+    </div>
+    </div>
+    </div>
+    <!-- /page content -->
 
 
 </body>

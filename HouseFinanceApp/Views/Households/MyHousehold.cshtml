@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HouseFinanceApp.Models.HouseholdViewModel>
+﻿@model HouseFinanceApp.Models.DashViewModel
+@using HouseFinanceApp.Models
 
 @{
 	ViewBag.Title = "MyHousehold";
@@ -17,7 +18,7 @@
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="x_panel">
 						<div class="x_title">
-							<h1>@Html.LabelFor(model => model.HHName, htmlAttributes: new { @class = "control-label col-md-2" }) <small></small></h1>
+							<h1>@*@Html.DisplayNameFor(model => model.Name)*@ <small></small></h1>
 							<div class="x_content">
 
 							</div>
@@ -39,14 +40,17 @@
 								</thead>
 								<tbody>
 
-									@foreach (var item in Model)
+									@foreach (var item in Model.Households)
 									{
 										<tr>
+                                            <td>
+                                                @item.Members;
+
+                                                
+
+                                            </td>
 											<td>
-												@item.Members
-											</td>
-											<td>
-												@item.
+										@item.Invites.Select(e => e.Email);
 											</td>
 										</tr>
 									}
@@ -63,7 +67,7 @@
 							@using (Html.BeginForm("Invite", "Invites", FormMethod.Post))
 							{
 								@Html.AntiForgeryToken()
-								@Html.HiddenFor(model => model.HHId)
+								@*@Html.HiddenFor(model => model.HHId)*@
 
 								<div class="form-horizontal">
 									<h4>Invite</h4>
@@ -77,14 +81,14 @@
 											</div>
 										</div>*@
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.EmailForInvitedResident, null, "Email for invitee")
+									@*<div class="form-group">
+										@Html.LabelFor(model => model.Email, null, "Email for invitee")
 
 										<div class="col-md-10">
 											@Html.EditorFor(model => model.EmailForInvitedResident, new { htmlAttributes = new { @class = "form-control" } })
 											@Html.ValidationMessageFor(model => model.EmailForInvitedResident, "", new { @class = "text-danger" })
 										</div>
-									</div>
+									</div>*@
 									<div class="form-group">
 										<div class="col-md-offset-2 col-md-10">
 											<input type="submit" value="Send Invite" class="btn btn-default" />
