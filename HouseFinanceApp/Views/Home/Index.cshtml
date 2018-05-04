@@ -88,152 +88,84 @@
                     </div>
                 </div>
 
+                <div class="col-lg-12">
+                    <div class="">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Recent Transactions</h2>
 
-                <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="tile-stats">
-                        <div class="count">
-                            Recent <br />Transactions
-                        </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
 
-                        <ol>
-                            @foreach (var item in Model.Transactions.Take(5))
+                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                            <li role="presentation" class="active">
+                                                <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">My House</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Profile</a>
+                                            </li>
 
-                            {
-                                if (item.IsDeleted == false)
-                                {
+                                        </ul>
+                                        <div id="myTabContent" class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                                <ol>
+                                                    @foreach (var item in Model.Transactions.Take(5))
 
-                                    <li>
-                                        @Html.DisplayFor(modelItem => item.Date, "{0:dd/MMM/yyyy}"),
-                                        @Html.DisplayFor(modelItem => item.Account.Name)
-                                        <br />
-                                        $ @Html.DisplayFor(modelItem => item.Amount)
-                                        <br />
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                        <br />
-                                    </li>
+                                                    {
+                                                        if (item.IsDeleted == false)
+                                                        {
 
-                                }
-                            }
-                        </ol>
-                    </div>
-                </div>
+                                                            <li>
+                                                                @Html.DisplayFor(modelItem => item.Date, "{0:dd/MMM/yyyy}"),
+                                                                @Html.DisplayFor(modelItem => item.Account.Name)
+                                                                <br />
+                                                                $ @Html.DisplayFor(modelItem => item.Amount)
+                                                                <br />
+                                                                @Html.DisplayFor(modelItem => item.Description)
+                                                                <br />
+                                                            </li>
 
-                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="tile-stats">
-                        <div class="page-title">
-                            <h3>Personal Accounts/Balances</h3>
-                        </div>
-
-                        <ol>
-                            @foreach (var item in Model.HouseAccounts)
-
-                            {
-                                if (item.IsDeleted == false)
-                                {
-                                    <li>
-                                        @Html.DisplayFor(modelItem => item.Name)
-                                        <br />
-                                        $ @Html.DisplayFor(modelItem => item.Balance)
-                                    </li>
-                                }
-                            }
-
-                        </ol>
+                                                        }
+                                                    }
+                                                </ol>
 
 
-                        @Html.ActionLink("Go To Household Transactions", "Index", "Transactions", new { @class = "btn btn-primary", type = "button" })
-                    </div>
-                </div>
 
-            </div>
+                                            </div>
 
-
-            <div class="">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2><i class="fa fa-bars"></i> Tabs <small>Float left</small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            <a href="#">Settings 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-
-                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Home</a>
-                                    </li>
-                                    <li role="presentation" class="">
-                                        <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Profile</a>
-                                    </li>
-                                    <li role="presentation" class="">
-                                        <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Profile</a>
-                                    </li>
-                                </ul>
-                                <div id="myTabContent" class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-                                        <p>
-                                            Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                                            synth. Cosby sweater eu banh mi, qui irure terr.
-                                        </p>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-                                        <p>
-                                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                                            booth letterpress, commodo enim craft beer mlkshk aliquip
-                                        </p>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                                        <p>
-                                            xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                                            booth letterpress, commodo enim craft beer mlkshk
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-
-                    <div id="myRealTimeApiData">My data displayed in a fusion chart!</div>
-
-                </div>
-
-                @section scripts{
-                    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-
-                    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-                    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
-                    <!-- Fusion charts-->
-                    <script src="~/Assets/FusionCharts/js/fusioncharts.js"></script>
-                    <script src="~/Assets/FusionCharts/js/fusioncharts.charts.js"></script>
-                    <script src="~/Assets/FusionCharts/js/fusioncharts.widgets.js"></script>
-                    <script src="~/Assets/FusionCharts/js/fusioncharts.powercharts.js"></script>
-                    <script src="~/Assets/FusionCharts/js/themes/fusioncharts.theme.fint.js"></script>
 
 
-                    <script>
+
+                    <div class="row">
+
+                        <div id="myRealTimeApiData">My data displayed in a fusion chart!</div>
+
+                    </div>
+
+                    @section scripts{
+                        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+                        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+                        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+                        <!-- Fusion charts-->
+                        <script src="~/Assets/FusionCharts/js/fusioncharts.js"></script>
+                        <script src="~/Assets/FusionCharts/js/fusioncharts.charts.js"></script>
+                        <script src="~/Assets/FusionCharts/js/fusioncharts.widgets.js"></script>
+                        <script src="~/Assets/FusionCharts/js/fusioncharts.powercharts.js"></script>
+                        <script src="~/Assets/FusionCharts/js/themes/fusioncharts.theme.fint.js"></script>
+
+
+                        <script>
 
         //var uri = '../Api/FinancialPortal/Households/json?id=';
         //var uri2 = '../Api/FinancialPortal/Accounts/json?householdId=';
@@ -317,8 +249,8 @@
                     var revenueChart = new FusionCharts({
                         "type": "column3d",
                         "renderAt": "myRealTimeApiData",
-                        "width": "500",
-                        "height": "300",
+                        "width": "650",
+                        "height": "400",
                         "dataFormat": "json",
                         "dataSource": {
                             "chart": {
@@ -338,8 +270,69 @@
         });
 
 
-                    </script>
-                }
+                        </script>
+                    }
+
+
+                    <div class="">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Account Balances</h2>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                            <li role="presentation" class="active">
+                                                <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">My House</a>
+                                            </li>
+                                            <li role="presentation" class="">
+                                                <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Profile</a>
+                                            </li>
+
+                                        </ul>
+                                        <div id="myTabContent" class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                                <ol>
+                                                    @foreach (var item in Model.HouseAccounts)
+                                                    {
+                                                        if (item.IsDeleted == false)
+                                                        {
+                                                            <li>
+                                                                @Html.DisplayFor(modelItem => item.Name)
+                                                                <br />
+                                                                $ @Html.DisplayFor(modelItem => item.Balance)
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ol>
+                                                @Html.ActionLink("Household Accounts Details", "HouseAccounts", "PersonalAccounts", null, new { @class = "btn btn-primary", type = "button" })
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                                <p>
+                                                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
+                                                    booth letterpress, commodo enim craft beer mlkshk aliquip
+                                                </p>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                                                <p>
+                                                    xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
+                                                    booth letterpress, commodo enim craft beer mlkshk
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
 
 
             </div>
