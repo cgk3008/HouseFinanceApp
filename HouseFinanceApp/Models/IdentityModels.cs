@@ -17,7 +17,7 @@ namespace HouseFinanceApp.Models
             // Add custom user claims here
             userIdentity.AddClaim(new Claim("HouseholdId", HouseholdId.ToString()));
             userIdentity.AddClaim(new Claim("Accounts", Accounts.ToString()));
-            //userIdentity.AddClaim(new Claim("Name", FullName));
+            userIdentity.AddClaim(new Claim("Name", FullName));
             return userIdentity;
         }
 

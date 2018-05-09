@@ -15,8 +15,8 @@ namespace HouseFinanceApp.Models
 
         public static string GetFullName(this IIdentity user)
         {
-            if (System.Diagnostics.Debugger.IsAttached == false)
-                System.Diagnostics.Debugger.Launch();
+            //if (System.Diagnostics.Debugger.IsAttached == false)
+            //    System.Diagnostics.Debugger.Launch();
 
             var ClaimsUser = (ClaimsIdentity)user;
             var claim = ClaimsUser.Claims.FirstOrDefault(c => c.Type == "Name");
@@ -29,6 +29,24 @@ namespace HouseFinanceApp.Models
             {
                 return null;
             }
+        }
+
+
+        public static int? GetHouseName(this IIdentity user)
+        {
+            var claimsIdentity = (ClaimsIdentity)user;
+
+
+            var HouseholdClaim = claimsIdentity.Claims
+              .FirstOrDefault(c => c.Type == "HouseholdId");
+
+            var HouseholdClaim1 = claimsIdentity.Claims.Where(u => u.Type == "HouseholdId").
+
+
+            if (HouseholdClaim != null)
+                return int.Parse(HouseholdClaim.Value);
+            else
+                return null;
         }
 
 

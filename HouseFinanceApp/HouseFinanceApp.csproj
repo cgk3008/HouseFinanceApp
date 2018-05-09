@@ -224,6 +224,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\accounting\accounting.min.js" />
     <Content Include="Assets\build\css\custom.css" />
     <Content Include="Assets\build\css\custom.min.css" />
     <Content Include="Assets\build\images\back_disabled.png" />

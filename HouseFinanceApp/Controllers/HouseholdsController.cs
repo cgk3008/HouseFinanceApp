@@ -66,6 +66,8 @@ namespace HouseFinanceApp.Controllers
             var userPersonalAccounts = db.PersonalAccounts.Where(p => p.CreatedById == userId).ToList();
             var userTransactions = db.Transactions.Where(t => t.EnteredById == userId).ToList();
             var householdName = db.Households.Where(n => n.Id == id).Select(t => t.Name);
+            var household = db.Households.Where(i => i.Id == id);
+
 
 
             DashViewModel model = new DashViewModel()
@@ -73,6 +75,7 @@ namespace HouseFinanceApp.Controllers
                 PersonalAccounts = userPersonalAccounts,
                 Transactions = userTransactions,
                 HouseAccounts = houseAccounts,
+                Households = household,
                 //HouseTransactions = acctIdByHouseId,
                 //Households = householdName,
             };

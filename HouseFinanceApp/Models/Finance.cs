@@ -25,6 +25,7 @@ namespace HouseFinanceApp.Models
         public int Id { get; set; }
         public int CategoryId { get; set; }
         public int BudgetId { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         public decimal Amount { get; set; }
 
         public virtual Category Category { get; set; }
@@ -99,8 +100,10 @@ namespace HouseFinanceApp.Models
         public int Id { get; set; }
         public int HouseholdId { get; set; }
         public string Name { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         public decimal Balance { get; set; }
         [Display(Name = "Reconciled Balance")]
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         public decimal ReconciledBalance { get; set; }
         public string CreatedById { get; set; }
         [Display(Name = "Deleted")]
@@ -121,6 +124,7 @@ namespace HouseFinanceApp.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = false)]
         public DateTimeOffset Date { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         public decimal Amount { get; set; }
         [Display(Name = "Credit")]
         public bool Type { get; set; }
@@ -129,6 +133,7 @@ namespace HouseFinanceApp.Models
         [Display(Name = "Entered By")]
         public string EnteredById { get; set; }
         public bool Reconciled { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         public decimal ReconciledAmount { get; set; }
         public bool IsDeleted { get; set; }
         [DataType(DataType.Date)]
