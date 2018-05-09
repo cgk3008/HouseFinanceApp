@@ -39,18 +39,18 @@ namespace HouseFinanceApp.Controllers
         // GET: AccountTransactions
         public ActionResult AccountTransactions(int? id) //need to pass account ID from HouseAccounts or MyAccounts View to this action
         {
-            
+
             //setup a Trnsactions view model????
-            
+
 
             var transactions = db.Transactions.Where(t => t.AccountId == id).Include(t => t.Account).Include(t => t.Category).Include(t => t.EnteredBy);
-            
+
             //foreach (Transaction transaction in transactions)
             //{
 
             //}
 
-                return View(transactions.ToList());
+            return View(transactions.ToList());
         }
 
 
@@ -119,14 +119,29 @@ namespace HouseFinanceApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Transaction transaction = db.Transactions.Find(id);
+            var HouseholdId = User.Identity.GetHouseholdId().Value;
+            var acct = db.PersonalAccounts.Where(h => h.HouseholdId == HouseholdId);
             if (transaction == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AccountId = new SelectList(db.PersonalAccounts, "Id", "Name", transaction.AccountId);
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
-            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FullName", transaction.EnteredById);
+
+
+
+            ViewBag.AccountId = new SelectList(acct, "Id", "Name");
+
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.EnteredById = new SelectList(db.Users, "Id", "FullName");
+
+            //ViewBag.AccountId = new SelectList(db.PersonalAccounts, "Id", "Name", transaction.AccountId);
+            // ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
+            //ViewBag.EnteredById = new SelectList(db.Users, "Id", "FullName", transaction.EnteredById);
+
             return View(transaction);
+
+
+
+
         }
 
         // POST: Transactions/Edit/5
@@ -135,7 +150,7 @@ namespace HouseFinanceApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,AccountId,Description,Date,Amount,Type,Void,CategoryId,EnteredById,Reconciled,ReconciledAmount,IsDeleted")] Transaction transaction)
-        {  
+        {
             if (ModelState.IsValid)
             {
                 db.Entry(transaction).State = EntityState.Modified;

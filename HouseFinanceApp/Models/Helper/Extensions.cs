@@ -32,22 +32,22 @@ namespace HouseFinanceApp.Models
         }
 
 
-        public static int? GetHouseName(this IIdentity user)
-        {
-            var claimsIdentity = (ClaimsIdentity)user;
+        //public static int? GetHouseName(this IIdentity user)
+        //{
+        //    var claimsIdentity = (ClaimsIdentity)user;
 
 
-            var HouseholdClaim = claimsIdentity.Claims
-              .FirstOrDefault(c => c.Type == "HouseholdId");
+        //    var HouseholdClaim = claimsIdentity.Claims
+        //      .FirstOrDefault(c => c.Type == "HouseholdId");
 
-            var HouseholdClaim1 = claimsIdentity.Claims.Where(u => u.Type == "HouseholdId").
+        //    var HouseholdClaim1 = claimsIdentity.Claims.Where(u => u.Type == "HouseholdId").
 
 
-            if (HouseholdClaim != null)
-                return int.Parse(HouseholdClaim.Value);
-            else
-                return null;
-        }
+        //    if (HouseholdClaim != null)
+        //        return int.Parse(HouseholdClaim.Value);
+        //    else
+        //        return null;
+        //}
 
 
         public static int? GetHouseholdId(this IIdentity user)

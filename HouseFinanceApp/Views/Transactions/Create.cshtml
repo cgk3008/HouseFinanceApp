@@ -32,16 +32,18 @@
 									@Html.AntiForgeryToken()
 
 									<div class="form-horizontal">
-										<h4>Transaction</h4>
+										@*<h4>Transaction</h4>*@
 										<hr />
 										@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-										<div class="form-group">
-											@*@Html.LabelFor(model => model.AccountId, "Account ID", htmlAttributes: new { @class = "control-label col-md-2", id =  Model.AccountId})*@
-											<div class="col-md-10">
-												@Html.DropDownList("AccountId", null, htmlAttributes: new { @class = "form-control" })
-												@Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
-											</div>
-										</div>
+                                        <div class="form-group">
+
+                                            @Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            @*@Html.LabelFor(model => model.AccountId, "Account ID", htmlAttributes: new { @class = "control-label col-md-2", id =  Model.AccountId})*@
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("AccountId", null, htmlAttributes: new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
 
 										<div class="form-group">
 											@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -139,9 +141,9 @@
 									</div>
 								}
 
-									<div>
+									@*<div>
 										@Html.ActionLink("Back to List", "AccountTransactions", new { id = Model.AccountId }, new { @class = "btn btn-default" })
-									</div>
+									</div>*@
 
 
 						</div>
@@ -150,9 +152,7 @@
 			</div>
 		</div>
 	</div>
-	<div>
-		@Html.ActionLink("Back to List", "Index")
-	</div>
+	
 
 	@section Scripts {
 		@Scripts.Render("~/bundles/jqueryval")
