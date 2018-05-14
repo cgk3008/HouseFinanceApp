@@ -30,7 +30,18 @@ namespace HouseFinanceApp.Controllers
 
             var userHousehold = User.Identity.GetHouseholdId();
 
+            var userName = User.Identity.GetFullName();
+
             var houseAccounts = db.PersonalAccounts.Where(h => h.HouseholdId == userHousehold).ToList();
+
+
+
+
+            //var createdByName = db.PersonalAccounts.Where(n => n.CreatedById == User.Identity.GetUserId).ToList();
+
+
+
+
 
             return View(houseAccounts);
 

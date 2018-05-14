@@ -32,6 +32,25 @@ namespace HouseFinanceApp.Models
         }
 
 
+        public static string GetCreatedByName(this IIdentity user)
+        {
+            //if (System.Diagnostics.Debugger.IsAttached == false)
+            //    System.Diagnostics.Debugger.Launch();
+
+            var ClaimsUser = (ClaimsIdentity)user;
+            var claim = ClaimsUser.Claims.FirstOrDefault(c => c.Type == "Name");
+            if (claim != null)
+            {
+                return claim.Value;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         //public static int? GetHouseName(this IIdentity user)
         //{
         //    var claimsIdentity = (ClaimsIdentity)user;
