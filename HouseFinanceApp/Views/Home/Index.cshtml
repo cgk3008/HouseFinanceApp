@@ -291,15 +291,15 @@
                                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                             <li role="presentation" class="active">
-                                                <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">My House</a>
+                                                <a href="#tab_content5" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">My House</a>
                                             </li>
                                             <li role="presentation" class="">
-                                                <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Profile</a>
+                                                <a href="#tab_content6" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Profile</a>
                                             </li>
 
                                         </ul>
                                         <div id="myTabContent" class="tab-content">
-                                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content5" aria-labelledby="home-tab">
                                                 <ol>
                                                     @foreach (var item in Model.HouseAccounts)
                                                     {
@@ -321,18 +321,29 @@
                                                 </ol>
                                                 @Html.ActionLink("Household Accounts Details", "HouseAccounts", "PersonalAccounts", null, new { @class = "btn btn-primary", type = "button" })
                                             </div>
-                                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-                                                <p>
-                                                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                                                    booth letterpress, commodo enim craft beer mlkshk aliquip
-                                                </p>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="profile-tab">
+                                                <ol>
+                                                    @foreach (var item in Model.PersonalAccounts)
+        {
+            if (item.IsDeleted == false)
+            {
+                                            <li>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                                <br />
+
+
+
+                                                @Html.DisplayFor(modelItem => item.Balance)
+
+
+
+                                            </li>
+}
+}
+                                                </ol>
+                                                @Html.ActionLink("Household Accounts Details", "HouseAccounts", "PersonalAccounts", null, new { @class = "btn btn-primary", type = "button" })
                                             </div>
-                                            <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                                                <p>
-                                                    xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                                                    booth letterpress, commodo enim craft beer mlkshk
-                                                </p>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
