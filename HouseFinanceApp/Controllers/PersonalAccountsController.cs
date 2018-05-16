@@ -47,6 +47,32 @@ namespace HouseFinanceApp.Controllers
 
         }
 
+        //GET: Account with list of Transaction to reconcile
+        public ActionResult TransactAccountBalance(int? id)
+        {
+
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            var acctId = db.PersonalAccounts.Where(p => p.Id == id);
+            var acctTransactions = db.Transactions.Where(t => t.AccountId == id).ToList();
+
+
+            TransactionAccountViewModel model = new TransactionAccountViewModel()
+            {
+                PersAcct = acctId,
+                Transactions = acctTransactions,
+               
+            };
+
+
+            return View(model);
+        }
+
+
+
 
 
         // GET: PersonalAccounts/Details/5
