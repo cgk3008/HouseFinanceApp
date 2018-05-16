@@ -101,12 +101,12 @@
 							<td>
 								@Html.DisplayFor(modelItem => item.IsDeleted)
 							</td>
-							<td>
-								@*@Html.HiddenFor(m =>*@ 
-								@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-								@Html.ActionLink("Details", "Details", new { id = item.Id }) |
-								@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-							</td>
+                            <td>
+                                @Html.HiddenFor(modelItem => item.Date, "{0:dd-MMM-yyyy}")
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
 						</tr>
 }
 
