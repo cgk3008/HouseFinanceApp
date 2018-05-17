@@ -17,8 +17,7 @@ namespace HouseFinanceApp.Models
         public decimal ReconciledBal { get; set; }
 
         public PersonalAccount PersAcct { get; set; }
-        public IEnumerable<Transaction> Transactions { get; set; }
-       
+        public IEnumerable<Transaction> Transactions { get; set; }  
         
 
         //public ApplicationUser Member { get; set; }
@@ -29,10 +28,4 @@ namespace HouseFinanceApp.Models
 
 
     }
-
-
-
-
-
-
 }

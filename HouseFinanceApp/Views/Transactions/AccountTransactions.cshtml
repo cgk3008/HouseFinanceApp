@@ -17,7 +17,17 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h1>Transactions in @*@Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })*@ <small></small></h1>
+                            <h1>
+                                Transactions in
+                                @foreach (var item in Model.Take(1))
+        {
+
+            @Html.DisplayFor(modelItem => item.Account.Name)
+
+        }
+
+                                @*@Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })*@ <small></small>
+                            </h1>
                             <div class="x_content">
 
                             </div>
@@ -30,9 +40,7 @@
                             <table id="mytable" class="dataTables" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            Account
-                                        </th>
+                                       
                                         <th>
                                             Category
                                         </th>
@@ -70,9 +78,7 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Account.Name)
-                                            </td>
+                                            
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Category.Name)
                                             </td>

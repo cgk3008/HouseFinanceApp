@@ -80,7 +80,7 @@
                                                     @Html.DisplayFor(modelItem => item.CreatedBy.FullName)
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Go to Transactions", "TransactionAccountView", "PersonalAccounts", new { id = item.Id }, null)
+                                                    @Html.ActionLink("Reconcile Transaction", "TransactionAccountView", "PersonalAccounts", new { id = item.Id }, null)
                                                 </td>
                                                 <td>
                                                     @Html.ActionLink("Go to Transactions", "AccountTransactions", "Transactions", new { id = item.Id }, null)
