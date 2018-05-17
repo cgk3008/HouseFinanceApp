@@ -4827,6 +4827,7 @@
     <Content Include="Views\Households\MyHousehold.cshtml" />
     <Content Include="Views\Transactions\AccountTransactions.cshtml" />
     <Content Include="Views\PersonalAccounts\HouseAccounts.cshtml" />
+    <Content Include="Views\PersonalAccounts\TransactionAccountView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

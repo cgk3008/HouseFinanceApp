@@ -50,6 +50,9 @@
                                                     Created By
                                                 </th>
                                                 <th>
+                                                    Link to Reconcile Account Transactions
+                                                </th>
+                                                <th>
                                                     Link to Account Transactions
                                                 </th>
                                             </tr>
@@ -63,23 +66,26 @@
                                                 if (item.IsDeleted == false)
 
                                                 {
-                                                    <tr>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Name)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Balance)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.ReconciledBalance)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.CreatedBy.FullName)
-                                                        </td>
-                                                        <td>
-                                                            @Html.ActionLink("Go to Transactions", "AccountTransactions", "Transactions", new { id = item.Id }, null)
-                                                        </td>
-                                                    </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Balance)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ReconciledBalance)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CreatedBy.FullName)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Go to Transactions", "TransactionAccountView", "PersonalAccounts", new { id = item.Id }, null)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Go to Transactions", "AccountTransactions", "Transactions", new { id = item.Id }, null)
+                                                </td>
+                                            </tr>
 
                                                 }
                                             }

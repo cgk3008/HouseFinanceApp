@@ -56,7 +56,7 @@ namespace HouseFinanceApp.Controllers
                 return HttpNotFound();
             }
 
-            var acctId = db.PersonalAccounts.Where(p => p.Id == id);
+            var acctId = db.PersonalAccounts.Where(p => p.Id == id).FirstOrDefault();
             var acctTransactions = db.Transactions.Where(t => t.AccountId == id).ToList();
 
 

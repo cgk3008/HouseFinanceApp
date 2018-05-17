@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<HouseFinanceApp.Models.Transaction>
 
 @{
-	ViewBag.Title = "AccountTransactions";
+    ViewBag.Title = "AccountTransactions";
 }
 
 
@@ -9,122 +9,127 @@
 <body>
 
 
-	<div class="right_col" role="main">
-		<div class="">
+    <div class="right_col" role="main">
+        <div class="">
 
-			@*<div class="clearfix"></div>*@
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<div class="x_panel">
-						<div class="x_title">
-							<h1>Transactions in @*@Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })*@ <small></small></h1>
-							<div class="x_content">
+            @*<div class="clearfix"></div>*@
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h1>Transactions in @*@Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label col-md-2" })*@ <small></small></h1>
+                            <div class="x_content">
 
-							</div>
-							@*<div class="clearfix"></div>*@
-						</div>
-						<div class="x_content">
-							<p class="text-muted font-13 m-b-30">
+                            </div>
+                            @*<div class="clearfix"></div>*@
+                        </div>
+                        <div class="x_content">
+                            <p class="text-muted font-13 m-b-30">
 
-							</p>
-							<table class="table">
-								<tr>
-									<th>
-										Account
-									</th>
-									<th>
-										Category
-									</th>
-									<th>
-										Name
-									</th>
-									<th>
-										@Html.DisplayNameFor(model => model.Description)
-									</th>
-									<th>
-										@Html.DisplayNameFor(model => model.Date)
-									</th>
-									<th>
-										@Html.DisplayNameFor(model => model.Amount)
-									</th>
-									<th>
-										@Html.DisplayNameFor(model => model.Type)
-									</th>
-									<th>
-										@Html.DisplayNameFor(model => model.Void)
-									</th>
-									<th>
-										@Html.DisplayNameFor(model => model.Reconciled)
-									</th>
-									<th>
-										Reconciled Amount
-									</th>
-									<th>
-										Deleted
-									</th>
-									<th></th>
-								</tr>
+                            </p>
+                            <table id="mytable" class="dataTables" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Account
+                                        </th>
+                                        <th>
+                                            Category
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Date)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Amount)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Type)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Void)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Reconciled)
+                                        </th>
+                                        <th>
+                                            Reconciled Amount
+                                        </th>
+                                        <th>
+                                            Deleted
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Account.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Category.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EnteredBy.FullName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Description)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Date)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Amount)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Type)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Void)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Reconciled)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ReconciledAmount)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IsDeleted)
+                                            </td>
+                                            <td>
+                                                @Html.HiddenFor(modelItem => item.Date, "{0:dd-MMM-yyyy}")
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
 
-								@foreach (var item in Model)
-		{
-						<tr>
-							<td>
-								@Html.DisplayFor(modelItem => item.Account.Name)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Category.Name)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.EnteredBy.FullName)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Description)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Date)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Amount)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Type)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Void)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Reconciled)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.ReconciledAmount)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.IsDeleted)
-							</td>
-                            <td>
-                                @Html.HiddenFor(modelItem => item.Date, "{0:dd-MMM-yyyy}")
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                            </td>
-						</tr>
-}
+                            <script>
+                                $('#mytable').DataTable();
+                            </script>
 
-							</table>
-
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div>
             @Html.ActionLink("Back to Dashboard", "Index", "Home", null, new { @class = "btn btn-default" })
         </div>
-	</div>
-	@section Scripts {
-		@Scripts.Render("~/bundles/jqueryval")
-	}
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 </body>
 </html>
