@@ -1,165 +1,285 @@
 ﻿@model HouseFinanceApp.Models.Transaction
 
 @{
-	ViewBag.Title = "Edit";
+    Layout = null;
+    ViewBag.Title = "Edit";
 }
-<html>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Financial Portal</title>
+    <!-- Bootstrap -->
+    <link href="~/Assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="~/Assets/build/css/custom.min.css" rel="stylesheet">
 
 
-	<div class="right_col" role="main">
-		<div class="">
+    <!-- iCheck -->
+    <link href="~/Assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
 
-			@*<div class="clearfix"></div>*@
-			<div class="row">
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<div class="x_panel">
-						<div class="x_title">
-							<h1>Edit Transaction <small></small></h1>
-							<div class="x_content">
-
-							</div>
-							@*<div class="clearfix"></div>*@
-						</div>
-						<div class="x_content">
-							<p class="text-muted font-13 m-b-30">
-
-							</p>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="#">
 
 
-							@using (Html.BeginForm())
-							{
-								@Html.AntiForgeryToken()
 
-								<div class="form-horizontal">
-									<h4>Transaction</h4>
-									<hr />
-									@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-									@Html.HiddenFor(model => model.Id)
 
-									<div class="form-group">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-                                   
-										@Html.LabelFor(model => model.AccountId, "Account Id", htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											@Html.DropDownList("AccountId", null, htmlAttributes: new { @class = "form-control" })
-											@Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
-										</div>
-									</div>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-											@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-										</div>
-									</div>
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.css"> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker-standalone.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            @*@Html.HiddenFor(model => model.Date, "{0:dd-MMM-yyyy}")*@
-                                            @Html.EditorFor(model => model.Date,  new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+</head>
+
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <img src="~/Assets/production/images/sharpen-house-dollar.png" height="30" width="30" />@Html.ActionLink("Financial Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <!-- /menu profile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+
+
+                                <li>
+                                    <a>
+                                        <i class="fa fa-edit"></i>@Html.ActionLink("Create New Account", "Create", "PersonalAccounts")
+
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fa fa-desktop"></i>@Html.ActionLink("My Household", "MyHousehold", "Households"@*, new { id = item.Household.Id }*@)
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+
+                        </div>
+
+                        @Html.ActionLink("Contact", "Contact", "Home")
+
+                        @*@Html.DisplayFor(User.Identity.GetHouseholdId)*@
+
+
+                        <ul class="nav navbar-nav navbar-right">
+
+                            @Html.Partial("_LoginPartial")
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="right_col" role="main">
+                <div class="">
+
+                    @*<div class="clearfix"></div>*@
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h1>Edit Transaction <small></small></h1>
+                                    <div class="x_content">
+
+                                    </div>
+                                    @*<div class="clearfix"></div>*@
+                                </div>
+                                <div class="x_content">
+                                    <p class="text-muted font-13 m-b-30">
+
+                                    </p>
+
+
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+                                        <h4>Transaction</h4>
+                                        <hr />
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.Id)
+                                        
+                                        @Html.HiddenFor(model => model.EnteredById)
+                                        @Html.HiddenFor(model => model.Date)
+
+                                        <div class="form-group">
+
+
+                                            @Html.LabelFor(model => model.AccountId, "Account Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("AccountId", null, htmlAttributes: new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
+                                            </div>
                                         </div>
-									</div>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											@Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
-											@Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
-										</div>
-									</div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											<div class="checkbox">
-												@Html.EditorFor(model => model.Type)
-												@Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
-											</div>
-										</div>
-									</div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @*@Html.HiddenFor(model => model.Date, "{0:dd-MMM-yyyy}")*@
+                                                @*@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                <div class='input-group date' id='datetimepicker2'>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.Void, htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											<div class="checkbox">
-												@Html.EditorFor(model => model.Void)
-												@Html.ValidationMessageFor(model => model.Void, "", new { @class = "text-danger" })
-											</div>
-										</div>
-									</div>
+                                                    <input type='text' class="form-control" name="Date" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.CategoryId, "Category Id", htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											@Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
-											@Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
-										</div>
-									</div>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.EnteredById, "Entered By Id", htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											@Html.DropDownList("EnteredById", null, htmlAttributes: new { @class = "form-control" })
-											@Html.ValidationMessageFor(model => model.EnteredById, "", new { @class = "text-danger" })
-										</div>
-									</div>
+                                                <script type="text/javascript">
+                                                    $(function () {
+                                                        $('#datetimepicker2').datetimepicker();
+                                                    });
+                                                </script>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.Reconciled, htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											<div class="checkbox">
-												@Html.EditorFor(model => model.Reconciled)
-												@Html.ValidationMessageFor(model => model.Reconciled, "", new { @class = "text-danger" })
-											</div>
-										</div>
-									</div>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.ReconciledAmount, "Reconciled Amount", htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											@Html.EditorFor(model => model.ReconciledAmount, new { htmlAttributes = new { @class = "form-control" } })
-											@Html.ValidationMessageFor(model => model.ReconciledAmount, "", new { @class = "text-danger" })
-										</div>
-									</div>
+                                                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
 
-									<div class="form-group">
-										@Html.LabelFor(model => model.IsDeleted, "Deleted", htmlAttributes: new { @class = "control-label col-md-2" })
-										<div class="col-md-10">
-											<div class="checkbox">
-												@Html.EditorFor(model => model.IsDeleted)
-												@Html.ValidationMessageFor(model => model.IsDeleted, "", new { @class = "text-danger" })
-											</div>
-										</div>
-									</div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
 
-									<div class="form-group">
-										<div class="col-md-offset-2 col-md-10">
-											<input type="submit" value="Save" class="btn btn-success" />
-										</div>
-									</div>
-								</div>
-							}
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                <div class="checkbox">
+                                                    @Html.EditorFor(model => model.Type)
+                                                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
 
-							<div>
-								@Html.ActionLink("Back to List", "AccountTransactions", new { id = Model.AccountId }, new { @class = "btn btn-default" })
-							</div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Void, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                <div class="checkbox">
+                                                    @Html.EditorFor(model => model.Void)
+                                                    @Html.ValidationMessageFor(model => model.Void, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
 
-						
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.CategoryId, "Category Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.EnteredById, "Entered By Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("EnteredById", null, htmlAttributes: new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.EnteredById, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
 
-	@section Scripts {
-		@Scripts.Render("~/bundles/jqueryval")
-	}
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Reconciled, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                <div class="checkbox">
+                                                    @Html.EditorFor(model => model.Reconciled)
+                                                    @Html.ValidationMessageFor(model => model.Reconciled, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ReconciledAmount, "Reconciled Amount", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.ReconciledAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.ReconciledAmount, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.IsDeleted, "Deleted", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                <div class="checkbox">
+                                                    @Html.EditorFor(model => model.IsDeleted)
+                                                    @Html.ValidationMessageFor(model => model.IsDeleted, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Save" class="btn btn-success" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+
+                                    <div>
+                                        @Html.ActionLink("Back to List", "AccountTransactions", new { id = Model.AccountId }, new { @class = "btn btn-default" })
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </body>
 </html>

@@ -130,13 +130,10 @@ namespace HouseFinanceApp.Controllers
 
             ViewBag.AccountId = new SelectList(acct, "Id", "Name");
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
-            ViewBag.EnteredById = new SelectList(db.Users.Where(u => u.HouseholdId == HouseholdId), "Id", "FullName");
-            //ViewBag.Date = db.Transactions;
-
-            //ViewBag.AccountId = new SelectList(db.PersonalAccounts, "Id", "Name", transaction.AccountId);
-            // ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
-            //ViewBag.EnteredById = new SelectList(db.Users, "Id", "FullName", transaction.EnteredById);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
+            ViewBag.EnteredById = new SelectList(db.Users.Where(u => u.HouseholdId == HouseholdId), "Id", "FullName", transaction.EnteredById);
+            ViewBag.Date = transaction.Date;
+            
 
             return View(transaction);
 
