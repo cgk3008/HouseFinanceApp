@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -12,6 +13,35 @@ namespace HouseFinanceApp.Models
     public static class Extensions
     {
         private static ApplicationDbContext db = new ApplicationDbContext();
+
+//        public static decimal SumTransactions(this Transaction trans)
+//        {
+
+//            var acctId = trans.AccountId;
+
+//            var transact = trans.ReconciledAmount;
+//            var acctTransactions = db.Transactions.Where(t => t.AccountId == acctId).Include(r => r.ReconciledAmount);
+
+
+//            //decimal sumTransactions = acctTransactions.Sum();
+
+//            //var sumTransactions2 = new List<decimal> { acctTransactions };
+
+//            foreach (var aT )
+
+//                var ClaimsTransaction = (Transaction)trans;
+//            var claim = ClaimsTransaction.ReconciledAmount.
+
+
+//if (claim != null)
+//            {
+//                return claim.Value;
+
+//            }
+
+//        }
+
+
 
         public static string GetFullName(this IIdentity user)
         {

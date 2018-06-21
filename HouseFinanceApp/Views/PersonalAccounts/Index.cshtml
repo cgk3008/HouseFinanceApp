@@ -41,10 +41,10 @@
 										Account Name
 									</th>
 									<th>
-										@Html.DisplayNameFor(model => model.Balance)
+										Initial Balance
 									</th>
 									<th>
-										@Html.DisplayNameFor(model => model.ReconciledBalance)
+										Balance Minus Transactions
 									</th>
 									<th>
 										@Html.DisplayNameFor(model => model.IsDeleted)
@@ -68,7 +68,7 @@
 											@Html.DisplayFor(modelItem => item.Balance)
 										</td>
 										<td>
-											@Html.DisplayFor(modelItem => item.ReconciledBalance)
+											@Html.DisplayFor(modelItem => item.ReconciledBalance) @*should i rename reconciledBalance to CalculatedBalance?*@
 										</td>
 										<td>
 											@Html.DisplayFor(modelItem => item.IsDeleted)

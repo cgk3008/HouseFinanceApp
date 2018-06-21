@@ -147,10 +147,21 @@ namespace HouseFinanceApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,AccountId,Description,Date,Amount,Type,Void,CategoryId,EnteredById,Reconciled,ReconciledAmount,IsDeleted")] Transaction transaction)
+        public ActionResult Edit(/*int? id,*/ [Bind(Include = "Id,AccountId,Description,Date,Amount,Type,Void,CategoryId,EnteredById,Reconciled,ReconciledAmount,IsDeleted")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {
+
+                var acctId = transaction.AccountId;
+
+                var transact = transaction.ReconciledAmount;
+                var acctTransactions = db.Transactions.Where(t => t.AccountId == acctId).Include(r => r.ReconciledAmount);
+
+                //var acctTransactions2 = db.Transactions.Where(t => t.AccountId == acctId).ToList();
+
+                //foreach ()
+
+
                 db.Entry(transaction).State = EntityState.Modified;
                 db.SaveChanges();
                 //return RedirectToAction("Index");

@@ -16,7 +16,7 @@ namespace HouseFinanceApp.Models
         [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         public decimal ReconciledBal { get; set; }
 
-        public PersonalAccount PersAcct { get; set; }
+        public IEnumerable<PersonalAccount> PersAcct { get; set; }
         public IEnumerable<Transaction> Transactions { get; set; }  
         
 

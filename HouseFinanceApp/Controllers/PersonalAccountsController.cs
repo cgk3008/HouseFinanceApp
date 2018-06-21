@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using HouseFinanceApp.Models;
@@ -32,16 +33,14 @@ namespace HouseFinanceApp.Controllers
 
             var userName = User.Identity.GetFullName();
 
+            //var acctId = db.PersonalAccounts.Where(p => p.Id == );
+
             var houseAccounts = db.PersonalAccounts.Where(h => h.HouseholdId == userHousehold).ToList();
 
-
+            //var acctTransactions = db.Transactions.Where(i => i.AccountId == acctId).Sum(t => t.ReconciledAmount);
 
 
             //var createdByName = db.PersonalAccounts.Where(n => n.CreatedById == User.Identity.GetUserId).ToList();
-
-
-
-
 
             return View(houseAccounts);
 
@@ -64,7 +63,7 @@ namespace HouseFinanceApp.Controllers
             {
                 PersAcct = acctId,
                 Transactions = acctTransactions,
-               
+
             };
 
 
