@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -61,7 +62,7 @@ namespace HouseFinanceApp.Controllers
 
             TransactionAccountViewModel model = new TransactionAccountViewModel()
             {
-                PersAcct = acctId,
+                //PersAcct = acctId,
                 Transactions = acctTransactions,
 
             };
@@ -135,6 +136,9 @@ namespace HouseFinanceApp.Controllers
             {
                 return HttpNotFound();
             }
+
+            Decimal.Parse(personalAccount.Balance, System.Globalization.NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, new CultureInfo("en-US"));
+
             ViewBag.CreatedById = new SelectList(db.Users, "Id", "FullName", personalAccount.CreatedById);
             ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", personalAccount.HouseholdId);
             return View(personalAccount);
@@ -149,6 +153,14 @@ namespace HouseFinanceApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                //var Bal = StringUtilities personalAccount.Balance
+                //if (!Decimal.TryParse/*personalAccount.Balance != decimal*/)
+
+
+               
+
+
+
                 db.Entry(personalAccount).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

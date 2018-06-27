@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -14,34 +15,78 @@ namespace HouseFinanceApp.Models
     {
         private static ApplicationDbContext db = new ApplicationDbContext();
 
-//        public static decimal SumTransactions(this Transaction trans)
-//        {
+        //        public static decimal SumTransactions(this Transaction trans)
+        //        {
 
-//            var acctId = trans.AccountId;
+        //            var acctId = trans.AccountId;
 
-//            var transact = trans.ReconciledAmount;
-//            var acctTransactions = db.Transactions.Where(t => t.AccountId == acctId).Include(r => r.ReconciledAmount);
-
-
-//            //decimal sumTransactions = acctTransactions.Sum();
-
-//            //var sumTransactions2 = new List<decimal> { acctTransactions };
-
-//            foreach (var aT )
-
-//                var ClaimsTransaction = (Transaction)trans;
-//            var claim = ClaimsTransaction.ReconciledAmount.
+        //            var transact = trans.ReconciledAmount;
+        //            var acctTransactions = db.Transactions.Where(t => t.AccountId == acctId).Include(r => r.ReconciledAmount);
 
 
-//if (claim != null)
-//            {
-//                return claim.Value;
+        //            //decimal sumTransactions = acctTransactions.Sum();
 
-//            }
+        //            //var sumTransactions2 = new List<decimal> { acctTransactions };
 
-//        }
+        //            foreach (var aT )
+
+        //                var ClaimsTransaction = (Transaction)trans;
+        //            var claim = ClaimsTransaction.ReconciledAmount.
 
 
+        //if (claim != null)
+        //            {
+        //                return claim.Value;
+
+        //            }
+
+        //        }
+
+        public class StringUtilities
+        {
+            public static string CurrencyString(string currency)
+            {
+                if (currency == null) return "";
+                
+
+                const int maxlen = 80;
+                int len = currency.Length;
+                bool prevdash = false;
+                var sb = new StringBuilder(len); 
+                char c;
+                for (int i = 0; i < len; i++)
+                {
+                    c = currency[i];
+                    if ( (c >= '0' && c <= '9')
+                    {
+                        sb.Append(c);
+                        prevdash = false;
+                    }
+                    else if (c == '$')
+                    {
+                        //tricky way to convert to lowercase
+                        sb.Append((char)(c | 32));
+                        prevdash = false;
+                    }
+                    else if (c == ',')
+                    {
+                        if (!prevdash && sb.Length > 0)
+                        {
+                            sb.Append('-');
+                            prevdash = true;
+                        }
+                    }
+                    
+                    if (sb.Length == maxlen) break;
+                }
+                if (prevdash)
+                    return sb.ToString().Substring(0, sb.Length - 1);
+                else
+                    return sb.ToString();
+
+            }
+            
+        }
 
         public static string GetFullName(this IIdentity user)
         {
