@@ -104,7 +104,21 @@ namespace HouseFinanceApp.Models
         public decimal Balance { get; set; }
         [Display(Name = "Reconciled Balance")]
         [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
-        public decimal ReconciledBalance { get; set; }
+        public decimal ReconciledBalance { get; set;
+
+
+//public ApplicationDbContext Db { get => db; set => db = value; }
+
+       //find get method to subtract transaction from balance to equal reconciledBalance
+
+//        set
+//            {
+                
+//var recBal = (db.personalAccounts.Where( b => b. Balance - db.
+//            }
+                
+
+        }
         public string CreatedById { get; set; }
         [Display(Name = "Deleted")]
         public bool IsDeleted { get; set; }

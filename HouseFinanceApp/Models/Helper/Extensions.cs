@@ -42,6 +42,18 @@ namespace HouseFinanceApp.Models
 
         //        }
 
+
+            public class TransEdit
+        {
+            public static string TransactionEdit(string amount)
+
+            {
+                var amt = amount.Where
+            }
+        }
+
+
+
         public class StringUtilities
         {
             public static string CurrencyString(string currency)
@@ -57,7 +69,7 @@ namespace HouseFinanceApp.Models
                 for (int i = 0; i < len; i++)
                 {
                     c = currency[i];
-                    if ( (c >= '0' && c <= '9')
+                    if ( (c >= '0' && c <= '9'))
                     {
                         sb.Append(c);
                         prevdash = false;

@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using HouseFinanceApp.Models;
@@ -136,8 +137,18 @@ namespace HouseFinanceApp.Controllers
             {
                 return HttpNotFound();
             }
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
-            Decimal.Parse(personalAccount.Balance, System.Globalization.NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, new CultureInfo("en-US"));
+           
+            NumberStyles styles;
+            var value = personalAccount.Balance;
+
+     
+
+            //decimal balParse = decimal.Parse(bal.Replace("$", ""));
+                
+            // styles = NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands/*, new CultureInfo("en-US")*/;
+            //ShowNumericValue(value, styles);
 
             ViewBag.CreatedById = new SelectList(db.Users, "Id", "FullName", personalAccount.CreatedById);
             ViewBag.HouseholdId = new SelectList(db.Households, "Id", "Name", personalAccount.HouseholdId);
