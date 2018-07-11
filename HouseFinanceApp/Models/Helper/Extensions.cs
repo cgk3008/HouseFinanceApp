@@ -43,14 +43,14 @@ namespace HouseFinanceApp.Models
         //        }
 
 
-            public class TransEdit
-        {
-            public static string TransactionEdit(string amount)
+        //    public class TransEdit
+        //{
+        //    public static string TransactionEdit(string amount)
 
-            {
-                var amt = amount.Where
-            }
-        }
+        //    {
+        //        var amt = amount.Where
+        //    }
+        //}
 
 
 

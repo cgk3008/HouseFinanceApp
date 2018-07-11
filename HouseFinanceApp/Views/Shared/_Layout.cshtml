@@ -15,7 +15,7 @@
     <link href="~/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="~/Assets/vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="~/Assets/build/css/custom.min.css" rel="stylesheet">
     <script src="~/Assets/vendors/jquery/dist/jquery.js"></script>
@@ -79,10 +79,20 @@
                                         </ul>
                                     </li>*@
                                 <li>
-                                    <a>
+                                   
                                         <i class="fa fa-edit"></i>@Html.ActionLink("Create New Account", "Create", "PersonalAccounts")
                                         @*<span class="fa fa-chevron-down"></span>*@
-                                    </a>
+                                    
+                                        <i class="fa fa-edit"></i>   @Html.ActionLink("Create New Household", "CreateHousehold", "Households")
+                                   
+                                        @Html.ActionLink("Create Transaction", "Create", "Transactions")
+                                   
+                                        @Html.ActionLink("Create Category", "Create", "Categories")
+                                  
+                                        @Html.ActionLink("Create Budget", "Create", "Budgets")
+                                  
+                                        @Html.ActionLink("Create Budget Item", "Create", "BudgetItems")
+                                   
                                     @*<ul class="nav child_menu">
                                             <li><a href="form.html">General Form</a></li>
                                             <li><a href="form_advanced.html">Advanced Components</a></li>
