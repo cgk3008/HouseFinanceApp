@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
+using HouseFinanceApp.Models;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -15,35 +16,52 @@ namespace HouseFinanceApp.Models
     {
         private static ApplicationDbContext db = new ApplicationDbContext();
 
-        //        public static decimal SumTransactions(this Transaction trans)
-        //        {
+//////        public static decimal SumTransactions(this Transaction trans)
+//////        {
 
-        //            var acctId = trans.AccountId;
+//////            var acctId = db.PersonalAccounts.Where(p => p.Id == trans.AccountId);
+//////            var transact = trans.ReconciledAmount;
+//////            var acctTransactions = db.Transactions.Where(t => t.AccountId == acctId).Include(r => r.ReconciledAmount);
+//////            var recBal = db.PersonalAccounts.
 
-        //            var transact = trans.ReconciledAmount;
-        //            var acctTransactions = db.Transactions.Where(t => t.AccountId == acctId).Include(r => r.ReconciledAmount);
-
-
-        //            //decimal sumTransactions = acctTransactions.Sum();
-
-        //            //var sumTransactions2 = new List<decimal> { acctTransactions };
-
-        //            foreach (var aT )
-
-        //                var ClaimsTransaction = (Transaction)trans;
-        //            var claim = ClaimsTransaction.ReconciledAmount.
+//////var rBal = transact
 
 
-        //if (claim != null)
-        //            {
-        //                return claim.Value;
 
-        //            }
+//////            //decimal sumTransactions = acctTransactions.Sum();
 
-        //        }
+//////            //var sumTransactions2 = new List<decimal> { acctTransactions };
+
+//////            if ((trans.Reconciled == true) && (trans.AccountId == acctId))
+//////            {
+//////                foreach(transact)
+//////                {
+                    
+
+//////                }
 
 
-        //    public class TransEdit
+
+
+//////                    }
+
+
+
+
+//////            var ClaimsTransaction = (Transaction)trans;
+//////            var claim = ClaimsTransaction.ReconciledAmount.
+
+
+//////        if (claim != null)
+//////            {
+//////                return claim.Value;
+
+//////            }
+
+//////        }
+
+
+        //public class TransEdit
         //{
         //    public static string TransactionEdit(string amount)
 
@@ -59,17 +77,17 @@ namespace HouseFinanceApp.Models
             public static string CurrencyString(string currency)
             {
                 if (currency == null) return "";
-                
+
 
                 const int maxlen = 80;
                 int len = currency.Length;
                 bool prevdash = false;
-                var sb = new StringBuilder(len); 
+                var sb = new StringBuilder(len);
                 char c;
                 for (int i = 0; i < len; i++)
                 {
                     c = currency[i];
-                    if ( (c >= '0' && c <= '9'))
+                    if ((c >= '0' && c <= '9'))
                     {
                         sb.Append(c);
                         prevdash = false;
@@ -88,7 +106,7 @@ namespace HouseFinanceApp.Models
                             prevdash = true;
                         }
                     }
-                    
+
                     if (sb.Length == maxlen) break;
                 }
                 if (prevdash)
@@ -97,7 +115,7 @@ namespace HouseFinanceApp.Models
                     return sb.ToString();
 
             }
-            
+
         }
 
         public static string GetFullName(this IIdentity user)

@@ -157,12 +157,23 @@ namespace HouseFinanceApp.Controllers
                 var transact = transaction.ReconciledAmount;
                 var acctTransactions = db.Transactions.Where(t => t.AccountId == acctId).Include(r => r.ReconciledAmount);
 
+                var personalBalance = db.PersonalAccounts.Where(p => p.Id == acctId).Include(b => b.Balance);
+
+             
                 //var acctTransactions2 = db.Transactions.Where(t => t.AccountId == acctId).ToList();
 
-                //foreach ()
+                foreach (var item in acctTransactions)
+                {
+                    var pBalance = db.PersonalAccounts;
+
+                    if (item.AccountId == acctId && item.Reconciled == true)
+                    {
+                        item.ReconciledAmount = personalBalance - item.ReconciledAmount;
+                    }
+                }
 
 
-                db.Entry(transaction).State = EntityState.Modified;
+                    db.Entry(transaction).State = EntityState.Modified;
                 db.SaveChanges();
                 //return RedirectToAction("Index");
                 return RedirectToAction("AccountTransactions", new { id = transaction.AccountId });
