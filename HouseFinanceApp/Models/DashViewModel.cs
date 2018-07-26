@@ -23,11 +23,11 @@ namespace HouseFinanceApp.Models
         public IEnumerable<PersonalAccount> HouseAccounts { get; set; }
         public IEnumerable<Transaction> HouseTransactions { get; set; }
 
-        //public ApplicationUser Member { get; set; }
+        public ApplicationUser Member { get; set; }
 
-        //public bool IsJoinHouse { get; set; }
-        //public int? HHId { get; set; }
-        //public string HHName { get; set; }
+        public bool IsJoinHouse { get; set; }
+        public int? HHId { get; set; }
+        public string HHName { get; set; }
 
 
     }

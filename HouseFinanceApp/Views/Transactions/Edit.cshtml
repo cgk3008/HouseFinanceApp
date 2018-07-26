@@ -164,10 +164,11 @@
                                             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
                                                 @*@Html.HiddenFor(model => model.Date, "{0:dd-MMM-yyyy}")*@
-                                                @*@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                @*@Html.EditorFor(model => model.Date,  "{0:dd-MMM-yyyy hh:mm}", new { htmlAttributes = new { @class = "form-control" } })*@
                                                 <div class='input-group date' id='datetimepicker2'>
 
-                                                    <input type='text' class="form-control" name="Date" />
+                                                    <input data-format="dd-MMM-yyyy hh:mm" type='text' class="form-control" name="Date" />
+                                                    @*@Html.TextBoxFor(model => model.Date, "{0:dd-MMM-yyyy hh:mm}", new { type = "text", name = "Date", @class = "form-control", required = "required" })*@
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
@@ -178,6 +179,10 @@
                                                     $(function () {
                                                         $('#datetimepicker2').datetimepicker();
                                                     });
+
+                                                    //$("#datetimepicker2").on("dp.show", function (e) {
+                                                    //    $(e.target).data("DateTimePicker");
+                                                    //});
                                                 </script>
 
 
