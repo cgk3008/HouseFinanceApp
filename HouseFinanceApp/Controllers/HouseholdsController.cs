@@ -25,31 +25,10 @@ namespace HouseFinanceApp.Controllers
 
         // GET: MyHousehold
         public ActionResult MyHousehold()
-        {
-            //var user = db.Users.Find(User.Identity.GetUserId());
-            //var hh = db.Households.Where(h => h.Id == user.HouseholdId);
-            //var houseName = db.Households.Where(hn => hn.Name == user.Household.Name);
-
-            //HouseholdViewModel model = new HouseholdViewModel()
-            //{
-            //    //HHName = houseName,
-
-            //};
-            ////      public ApplicationUser Member { get; set; }
-
-            ////public bool IsJoinHouse { get; set; }
-            ////public int? HHId { get; set; }
-            ////public string HHName { get; set; }
-            ////public string EmailForInvitedResident { get; set; }
-
-
-            //return View(model);
-
-
+        {     
             var id = User.Identity.GetHouseholdId();
 
             //Household householdId = db.Households.Find(id);
-
 
             if (id == null)
             {
@@ -65,9 +44,9 @@ namespace HouseFinanceApp.Controllers
             //var houseTransactions = db.Transactions.Where(t => t.AccountId == acctIdByHouseId).ToList();
             var userPersonalAccounts = db.PersonalAccounts.Where(p => p.CreatedById == userId).ToList();
             var userTransactions = db.Transactions.Where(t => t.EnteredById == userId).ToList();
-            var householdName = db.Households.Where(n => n.Id == id);
-            var household = db.Households.Where(i => i.Id == id);
-
+            //var householdName = db.Households.Where(n => n.Id == id).ToList();
+            var household = db.Households.Where(i => i.Id == id).ToList();
+            var invite = db.Invites.Where(i => i.HouseholdId == id).ToList();
 
 
             DashViewModel model = new DashViewModel()
@@ -77,6 +56,7 @@ namespace HouseFinanceApp.Controllers
                 Transactions = userTransactions,  
                 
                 Households = household,
+                Invites = invite,
                 //HouseTransactions = acctIdByHouseId,
                 //Households = householdName,
             };

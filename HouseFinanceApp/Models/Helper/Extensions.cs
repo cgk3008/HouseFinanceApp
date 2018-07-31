@@ -16,49 +16,49 @@ namespace HouseFinanceApp.Models
     {
         private static ApplicationDbContext db = new ApplicationDbContext();
 
-        public static decimal SumTransactions(this Transaction trans)
-        {
+        //public static decimal SumTransactions(this Transaction trans)
+        //{
 
-            var acctId = db.PersonalAccounts.Where(p => p.Id == trans.AccountId);
-            var transact = trans.ReconciledAmount;
-            var acctTransactions = db.Transactions.Where(t => t.AccountId == acctId).Include(r => r.ReconciledAmount);
-            var recBal = db.PersonalAccounts.
+        //    var acctId = db.PersonalAccounts.Where(p => p.Id == trans.AccountId);
+        //    var transact = trans.ReconciledAmount;
+        //    var acctTransactions = db.Transactions.Where(t => t.AccountId == acctId).Include(r => r.ReconciledAmount);
+        //    var recBal = db.PersonalAccounts.
 
-        var rBal = transact
-
-
-
-                    //decimal sumTransactions = acctTransactions.Sum();
-
-            //var sumTransactions2 = new List<decimal> { acctTransactions };
-
-            if ((trans.Reconciled == true) && (trans.AccountId == acctId))
-            {
-                foreach (transact)
-                {
-
-
-                }
+        //var rBal = transact
 
 
 
+        //            //decimal sumTransactions = acctTransactions.Sum();
 
-            }
+        //    //var sumTransactions2 = new List<decimal> { acctTransactions };
+
+        //    if ((trans.Reconciled == true) && (trans.AccountId == acctId))
+        //    {
+        //        foreach (transact)
+        //        {
+
+
+        //        }
 
 
 
 
-            var ClaimsTransaction = (Transaction)trans;
-            var claim = ClaimsTransaction.ReconciledAmount.
+        //    }
 
 
-                if (claim != null)
-            {
-                return claim.Value;
 
-            }
 
-        }
+        //    var ClaimsTransaction = (Transaction)trans;
+        //    var claim = ClaimsTransaction.ReconciledAmount.
+
+
+        //        if (claim != null)
+        //    {
+        //        return claim.Value;
+
+        //    }
+
+        //}
 
 
         //public class TransEdit
