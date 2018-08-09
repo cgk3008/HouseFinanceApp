@@ -79,20 +79,20 @@
                                         </ul>
                                     </li>*@
                                 <li>
-                                   
-                                        <i class="fa fa-edit"></i>@Html.ActionLink("Create New Account", "Create", "PersonalAccounts")
-                                        @*<span class="fa fa-chevron-down"></span>*@
-                                    
-                                        <i class="fa fa-edit"></i>   @Html.ActionLink("Create New Household", "CreateHousehold", "Households")
-                                   
-                                        @Html.ActionLink("Create Transaction", "Create", "Transactions")
-                                   
-                                        @Html.ActionLink("Create Category", "Create", "Categories")
-                                  
-                                        @Html.ActionLink("Create Budget", "Create", "Budgets")
-                                  
-                                        @Html.ActionLink("Create Budget Item", "Create", "BudgetItems")
-                                   
+
+                                    <i class="fa fa-edit"></i>@Html.ActionLink("Create New Account", "Create", "PersonalAccounts")
+                                    @*<span class="fa fa-chevron-down"></span>*@
+
+                                    <i class="fa fa-edit"></i>   @Html.ActionLink("Create New Household", "CreateHousehold", "Households")
+
+                                    @Html.ActionLink("Create Transaction", "Create", "Transactions")
+
+                                    @Html.ActionLink("Create Category", "Create", "Categories")
+
+                                    @Html.ActionLink("Create Budget", "Create", "Budgets")
+
+                                    @Html.ActionLink("Create Budget Item", "Create", "BudgetItems")
+
                                     @*<ul class="nav child_menu">
                                             <li><a href="form.html">General Form</a></li>
                                             <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -226,12 +226,14 @@
                     </nav>
                 </div>
             </div>
+        </div>
+    </div>
 
 
-            @RenderBody()
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")
-            @RenderSection("scripts", required: false)
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 
 
 
